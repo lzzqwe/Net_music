@@ -230,9 +230,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
   
   ### 推荐
   
-  
-  
-  ###  <img src="https://github.com/lzzqwe/Net_music/tree/master/screenshot/1.png"  /> 
+  ###  ![](https://github.com/lzzqwe/Net_music/blob/master/screenshot/1.png)
   
   ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/2.png )
   
@@ -242,7 +240,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
   
 ### 歌单列表组件
   
-  ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/5.png )
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/5.png )
 
 ### 歌单详情组件
 
