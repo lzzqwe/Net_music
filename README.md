@@ -2,6 +2,10 @@
 
 模仿的网易云移动端播放器  采用 flexbox 和 position 布局  
 
+[在线播放地址]: http://music.icci.top/#/recommend
+
+
+
 # 如何使用和安装
 
 > NetMusic    前端
@@ -20,7 +24,7 @@ npm run build //打包NetMusic
 
 > 后台服务器      
 
-[网易云音乐 Node.js版API]: 
+[网易云音乐 NodeJS 版 API]: https://binaryify.github.io/NeteaseCloudMusicApi/#/
 
 ```
 下载 NeteaseCloudMusicApi
