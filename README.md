@@ -22,7 +22,7 @@ npm run build //打包NetMusic
 
 > 后台服务器      
 
-[网易云音乐 NodeJS 版 API]: https://binaryify.github.io/NeteaseCloudMusicApi/#/
+[网易云音乐Node.js版API]( https://binaryify.github.io/NeteaseCloudMusicApi/#/ )
 
 ```
 下载 NeteaseCloudMusicApi
@@ -234,7 +234,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
   
   ###  <img src="https://github.com/lzzqwe/Net_music/tree/master/screenshot/1.png"  /> 
   
-  ![](E:\vue\NetMusic\screenshot\2.png)
+  ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/2.png )
   
 ### 视频以及视频详情
   
@@ -246,27 +246,27 @@ node app.js // 服务端运行 访问 http://localhost:3000
 
 ### 歌单详情组件
 
-![](E:\vue\NetMusic\screenshot\6.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/6.png )
 
-![7](E:\vue\NetMusic\screenshot\7.png)
+![7]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/7.png )
 
 ### 播放器组件
 
-![](E:\vue\NetMusic\screenshot\9.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/9.png )
 
-![](E:\vue\NetMusic\screenshot\11.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/11.png )
 
 ### 评论组件
 
-![](E:\vue\NetMusic\screenshot\10.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/10.png )
 
 ### 歌手组件
 
-![](E:\vue\NetMusic\screenshot\12.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/12.png )
 
 ### 个人中心组件
 
-![](E:\vue\NetMusic\screenshot\13.png)
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/13.png )
 
 # 免责声明
 
