@@ -198,10 +198,10 @@ node app.js // 服务端运行 访问 http://localhost:3000
               index.js //引用 vuex，创建 store
             mutation-type.js  // 定义常量名 mutations 
               mutation.js // 配置 mutations
-```
-  
+  ```
+
 # 实现功能
-  
+
 - 播放器
   
 - 播放历史
@@ -235,11 +235,11 @@ node app.js // 服务端运行 访问 http://localhost:3000
   ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/2.png )
   
 ### 视频以及视频详情
-  
+
 ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/3.png )  ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/4.png )
-  
+
 ### 歌单列表组件
-  
+
 ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/5.png )
 
 ### 歌单详情组件
@@ -253,6 +253,8 @@ node app.js // 服务端运行 访问 http://localhost:3000
 ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/9.png )
 
 ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/11.png )
+
+![](https://github.com/lzzqwe/Net_music/blob/master/screenshot/8.png)
 
 ### 评论组件
 
