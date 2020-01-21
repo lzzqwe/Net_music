@@ -1,0 +1,65 @@
+@import '~common/stylus/variable.styl'
+.search
+  position fixed
+  top 0
+  bottom 0
+  width 100%
+  z-index 100
+  background-color $color-background
+  .search-box-wrapper
+    margin 10px
+    display flex 
+    .search-back
+      width 30px
+      flex 0 0 30px
+      display flex
+      align-items center
+      justify-content center
+      .iconfanhui
+        font-size 20px
+    .box
+      flex 1  
+  .shortCut-wrapper
+    position fixed
+    top 80px
+    bottom 0
+    width 100%
+    z-index 5
+    .shortCut
+      height 100%
+      overflow hidden
+      .hotKey
+        margin 20px 20px 0 20px
+        .hot-item
+          display flex
+          padding 0 10px
+          line-height 24px
+          background #3f00ff
+          margin-right 5px
+          margin-bottom 10px
+          border-radius 5px
+          font-size 14px
+          .rank-index
+            margin-right 6px
+          .hot-title
+            flex 1
+        .title
+          margin-bottom 10px
+      .search-history
+        margin 20px 20px 0 20px
+        .title
+          display flex
+          justify-content space-between
+          line-height 40px
+          .text
+            font-size 14px
+        .search-list
+          .search-item
+            display flex
+            justify-content space-between
+            line-height 40px          
+  .search-result
+    position fixed
+    top 74px
+    bottom 0
+    width 100%      

@@ -1,0 +1,93 @@
+@import '~common/stylus/mixin.styl'
+@import '~common/stylus/variable.styl'
+.play-list
+  position fixed
+  top 0
+  bottom 0
+  width 100%
+  z-index 200
+  background rgba(0,0,0,0.3)
+  .list-wrapper
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    background $color-background
+    .list-header
+      padding 20px 30px 10px 20px
+      .title
+        display flex
+        .iconpaixu
+          line-height 30px
+          margin-right 10px
+          color #ffcd32
+          font-size 25px
+          border 1px solid red
+          border-radius 50%
+          background-color rgba(255,255,255,0.2)
+        .iconliebiaoxunhuan
+          line-height 30px
+          margin-right 10px
+          color #ffcd32
+          font-size 25px
+          border 1px solid red
+          border-radius 50%
+          background-color rgba(255,255,255,0.2)
+        .icon-suiji
+          line-height 30px
+          margin-right 10px
+          color #ffcd32
+          font-size 25px
+          border 1px solid red
+          border-radius 50% 
+          background-color rgba(255,255,255,0.2)   
+        .text
+          flex 1
+          line-height 30px
+          font-size 14px
+          font-weight 600
+          color red
+        .iconlajitong1
+          color rgba(255,255,255,0.3)
+          line-height 30px  
+    .list-content
+      max-height 240px
+      overflow hidden
+      .list-item
+        line-height 40px
+        display flex
+        margin 0 20px
+        .iconfont
+          flex 0 0 30px
+          width 30px
+          text-align center
+          color #ffcd32
+        .songName
+          flex 1
+          margin-right 20px
+          no-wrap()
+        .iconshoucangdianjihou
+          margin-right 10px
+          color #ffcd32
+          &.color
+            color red
+        .iconiconjia
+          color #ffcd32      
+    .list-operate
+      margin 20px auto 30px auto
+      width 140px
+      .add
+        padding 5px 10px
+        font-size 10px
+        border 1px solid red
+        text-align center
+        border-radius 50px
+        .iconhao
+          font-size 12px
+          margin-right 5px
+          font-weight 600
+    .list-close
+      line-height 40px
+      text-align center
+      background #222
+      color rgba(255,255,255,0.5) 
