@@ -58,6 +58,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
 
   # 项目结构目录
 
+  ```
   │ - vue.config.js  // vue-cli 配置文件
   ├─public                                                 //静态资源目录
   │      index.html                                   //入口html文件
@@ -195,53 +196,53 @@ node app.js // 服务端运行 访问 http://localhost:3000
               actions.js //配置 actions
               getters.js //配置 getters
               index.js //引用 vuex，创建 store
-              mutation-type.js  // 定义常量 mutations 名
-
-  ​            mutation.js // 配置 mutations
-
-  # 实现功能
-
-  - 播放器
-
-  - 播放历史
-
-  - 歌词滚动
-
-  - 搜索
-
-  - 视频播放
-
-  - 上拉加载
-
-  - 查看评论
-
-  - 歌单详情
-
-  - 歌手详情
-
-  - 排行榜
-
-  - 歌曲收藏 取消
-
-  - 歌曲 播放 暂停 上一曲 下一曲 歌曲列表的播放顺序切换     
-
-    # 项目界面欣赏
-
-    ### 推荐
-
-    
-
-    ###  <img src="E:\vue\NetMusic\screenshot\1.png"  /> 
-
-    ![](E:\vue\NetMusic\screenshot\2.png)
-
-  ### 视频以及视频详情
-
-  ![](E:\vue\NetMusic\screenshot\3.png)  ![](E:\vue\NetMusic\screenshot\4.png)
-
-  ### 歌单列表组件
-
-  ![](E:\vue\NetMusic\screenshot\5.png)
+            mutation-type.js  // 定义常量名 mutations 
+              mutation.js // 配置 mutations
+```
+  
+# 实现功能
+  
+- 播放器
+  
+- 播放历史
+  
+- 歌词滚动
+  
+- 搜索
+  
+- 视频播放
+  
+- 上拉加载
+  
+- 查看评论
+  
+- 歌单详情
+  
+- 歌手详情
+  
+- 排行榜
+  
+- 歌曲收藏 取消
+  
+- 歌曲 播放 暂停 上一曲 下一曲 歌曲列表的播放顺序切换     
+  
+  # 项目界面欣赏
+  
+  ### 推荐
+  
+  
+  
+  ###  <img src="https://github.com/lzzqwe/Net_music/tree/master/screenshot/1.png"  /> 
+  
+  ![](E:\vue\NetMusic\screenshot\2.png)
+  
+### 视频以及视频详情
+  
+![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/3.png )  ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/4.png )
+  
+### 歌单列表组件
+  
+  ![]( https://github.com/lzzqwe/Net_music/blob/master/screenshot/5.png )
 
 ### 歌单详情组件
 
