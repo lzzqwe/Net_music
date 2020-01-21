@@ -2,9 +2,7 @@
 
 模仿的网易云移动端播放器  采用 flexbox 和 position 布局  
 
-[在线播放地址]: http://music.icci.top/#/recommend	"风热个"
-
-
+[在线播放地址]( http://music.icci.top/ )
 
 # 如何使用和安装
 
