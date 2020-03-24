@@ -65,7 +65,7 @@ export default {
         this.artists = artists
       },
       async _getSinger() {
-        const {artists} = await getSinger({cat:this.cat,initial:this.initial})
+        const {artists} = await getSinger(this.cat,this.initial)
          this.artists = artists
       },
      handlePlaylist(playList) {

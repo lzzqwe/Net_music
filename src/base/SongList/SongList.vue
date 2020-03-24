@@ -58,7 +58,8 @@ export default {
       margin-right 10px
       color $color-theme-d
       font-size 12px
-	.song-title
+	  .song-title
+      overflow hidden
       .song-name
         margin-bottom 10px
         font-size 14px

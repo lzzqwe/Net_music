@@ -29,7 +29,8 @@ export default {
 			if(!this.disc.id) {
         return this.$router.push('/recommend')
 			}
-        const {code,playlist} = await getdetail({id:this.disc.id})
+        // const {code,playlist} = await getdetail({id:this.disc.id})
+        const {code,playlist} = await getdetail(this.disc.id)
         if(code === 200) {
           this._nomalizeSongs(playlist)
         }

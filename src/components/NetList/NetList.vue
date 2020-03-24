@@ -91,9 +91,9 @@ export default {
 		}
 	},
 	async _getPlayList() {
-		const {playlists,code} = await getPlayList({
-			cat:this.cat,limit:this.limit,offset:this.offset,
-		})
+		const {playlists,code} = await getPlayList(
+			this.cat,this.limit,this.offset
+		)
 		if(code===200) {
 			this.playlist =this.playlist =this.playlist.concat(playlists)
 			this._hasMore(this.playlist)

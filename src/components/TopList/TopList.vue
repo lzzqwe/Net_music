@@ -40,7 +40,7 @@ export default {
             if (!this.$route.params.id) {
                 this.$router.push('/rank')
             }
-            const { code, playlist } = await getTopDetail({ idx: this.idx })
+            const { code, playlist } = await getTopDetail(this.idx)
             if (code === 200) {
               this._nomalizeSongs(playlist)
             }

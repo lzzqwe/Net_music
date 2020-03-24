@@ -59,7 +59,7 @@ export default {
   .tab-item-ls
     display flex
     .classify-title
-      font-size 16px
+      font-size 14px
     .item-ls-in
       padding 0 5px
       font-size 12px

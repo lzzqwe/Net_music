@@ -104,7 +104,8 @@ export default {
      result:[],
      current:0,
      newList:[],
-     nowIndex:-1
+     nowIndex:-1,
+     type:0
    }
   },
   components:{
@@ -136,9 +137,7 @@ export default {
        })
     },
     async _getNewSong() {
-      const {data,code} = await getNewSong({
-        type:0
-      })
+      const {data,code} = await getNewSong(this.type)
       if(code===200) {
         const lis = data.slice(0,10)
         const list = lis

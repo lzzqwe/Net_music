@@ -34,12 +34,12 @@
           <p class="rank-list-name">{{item.name}}</p>
           <p class="rank-update">{{item.updateFrequency}}</p>
         </div>
+      </div>
+      <div class="loading-container" v-show="!this.topList.length">
+        <van-loading  type="spinner" color="#1989fa">加载中...</van-loading>
       </div> 
      </div> 
     </base-scroll>
-    <div class="loading-container">
-      <van-loading v-show="!this.topList.length" type="spinner" color="#1989fa">加载中...</van-loading>
-    </div>
     <transition>
       <router-view></router-view>
     </transition>
@@ -170,11 +170,12 @@ export default {
           .songlist-index
             margin-right 5px
   .loading-container
-    position absolute
+    position fixed
     top 50%
     left 50%
-    transform translateX(-50%)
-    transform translateY(-50%)
+    // transform translateX(-50%)
+    // transform translateY(-50%)
+    transform translate3d(-50%,-50%,0)
   .v-enter
     transform translate3d(0,-100%,0)
     opacity 0

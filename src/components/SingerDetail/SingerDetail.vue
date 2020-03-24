@@ -38,7 +38,7 @@ export default {
           this.$router.push('/singer')
           return
         }
-       const {code,songs} =await getArtistSongs({id:this.singer.id})
+       const {code,songs} =await getArtistSongs(this.singer.id)
        if(code === 200) {
         this._nomalizeSongs(songs)
        }

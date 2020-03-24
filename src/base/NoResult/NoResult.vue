@@ -1,7 +1,7 @@
 <template>
 	<div class="no-result">
-		<img src="./timg.jpg" height="100" width="100" alt="">
-		<p>{{ title }}</p>
+		<img src="./timg.jpg" alt="">
+		<p class="no-title">{{ title }}</p>
 	</div>
 </template>
 <script>
@@ -24,4 +24,12 @@ export default {
   margin-top -50px
   width 100px
   height 100px
+  img {
+    width 100%
+    height 100%
+  }
+  .no-title {
+    font-size 18px
+    line-height 35px
+  }
 </style>

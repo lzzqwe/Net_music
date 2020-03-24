@@ -67,7 +67,7 @@ export default {
   // },
   methods: {
     async _getMvData(id) {
-      const { data, code } = await getMvData({ mvid: id })
+      const { data, code } = await getMvData(id)
       if (code === 200) {
         this.data = data
         this.url = data.brs['720']?data.brs['720'] :data.brs['480']
@@ -76,7 +76,7 @@ export default {
       }
     },
     async _getMvComment(id) {
-      const { hotComments, comments } = await getMvComment({ id: id })
+      const { hotComments, comments } = await getMvComment(id)
       this.hotComments = hotComments
       this.comments = comments
     }
