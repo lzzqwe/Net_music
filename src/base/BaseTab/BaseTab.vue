@@ -1,10 +1,10 @@
 <template>
   <div class="tab">
     <router-link tag="div" class="tab-item" to="/recommend">
-      <span class="tab-link">推荐</span>
+      <span class="tab-link">个性推荐</span>
     </router-link>
     <router-link tag="div" class="tab-item" to="/videos">
-      <span class="tab-link">视频</span>
+      <span class="tab-link">MV</span>
     </router-link>
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
     height: 44px
     line-height: 44px
     font-size: $font-size-medium
+    width 80%
+    position: fixed
+    top 0
+    left 50%
+    transform translateX(-50%)
     .tab-item
       flex: 1
       text-align: center

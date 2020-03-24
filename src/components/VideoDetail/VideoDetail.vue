@@ -35,7 +35,7 @@ export default {
     return {
       mvid: this.$route.params.id,
       data: {},
-      url: null,
+      url: '',
       cover: null,
       autoplay: true,
       hotComments: [],
@@ -70,7 +70,7 @@ export default {
       const { data, code } = await getMvData({ mvid: id })
       if (code === 200) {
         this.data = data
-        this.url = data.brs['720']
+        this.url = data.brs['720']?data.brs['720'] :data.brs['480']
         this.cover = data.cover
         this.desc = data.desc
       }
@@ -100,12 +100,12 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
-    top: 295px;
+    top: 266px;
     .hot 
       position: fixed;
       bottom: 0;
       width: 100%;
-      top: 338px;
+      top: 310px;
       overflow: hidden;
 .desc 
   padding: 20px;

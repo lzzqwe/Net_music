@@ -1,15 +1,17 @@
 <template>
-  <div ref='videos' class="videos" v-if="mv.length > 0">
-    <base-scroll 
+  <div ref='videos' class="videos">
+    <van-tabs @change='onChanges' @click="onClicks" v-model="active" swipeable>
+      <van-tab :key='index' v-for="(item,index) in this.tabs" :title="item.title">
+        <base-scroll 
     :data="mv"
     :pullup='pullup' 
     class="video-content"
     @scrollToEnd='loadMoreVideo'
     >
       <div>
-        <div v-show="updateTime" class="update-time">
+       <!--  <div v-show="updateTime" class="update-time">
           <span>更新时间:</span><span>{{  updateTime|formateDate }}</span>
-        </div>
+        </div> -->
         <div @click="handleClick(item)" :key="index+ '-only'" v-for="(item,index) in mv" class="mv-image">
           <img :src="item.cover" alt="">
           <div class="play-count">
@@ -21,6 +23,8 @@
         </div>
       </div>
     </base-scroll>
+      </van-tab>
+    </van-tabs>    
      <div class="loading-container" v-show='!mv.length'>
        <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
      </div>
@@ -31,7 +35,7 @@
 </template>
 <script>
 import BaseScroll from 'base/BaseScroll/BaseScroll'
-import { getMvRank } from 'api/index.js'
+import { getMvRank,getAllMv } from 'api/index.js'
 import { getDate } from 'common/js/until.js'
 import {playListMixin} from 'common/js/mixin.js'
 export default {
@@ -42,18 +46,27 @@ export default {
       mv: [],
       limit: 20,
       offset: 0,
-      poster: '',
-      updateTime:'',
       pullup:true,
-      hasMore:true
+      hasMore:true,
+      active:0,
+      area:'全部',
+      order:'最热'
     }
   },
   components: {
     BaseScroll
   },
   created() {
-    this._getMvRank()
-  },
+      this.tabs = [
+      {id:1,title:'全部'},
+      {id:2,title:'内地'},
+      {id:3,title:'港台'},
+      {id:4,title:'欧美'},
+      {id:5,title:'日本'},
+      {id:6,title:'韩国'}
+      ]
+      this._getAllMv() 
+    },
   filters:{
     formateDate(time) {
     	let date = new Date(time)
@@ -61,11 +74,22 @@ export default {
     }
   },
   methods: {
-    async _getMvRank() {
-      const { data,updateTime } = await getMvRank({ limit: this.limit, offset: this.offset })
-      this.mv = this.mv.concat(data)
-      this.updateTime = updateTime
-      this._hasMore(this.mv)
+    async _getAllMv() {
+      const {data,code} = await getAllMv({area:this.area,
+        limit:this.limit,
+        offset:this.offset,
+        order:this.order
+      })
+      if(code===200) {
+        this.mv = this.mv.concat(data)
+        this._hasMore(this.mv)
+      }
+    },
+    onClicks(name,title) {
+      this.area = title
+    },
+    onChanges(name,title) {
+      this.area = title
     },
     _hasMore(data) {
       if(!data.length) {
@@ -82,7 +106,7 @@ export default {
         message:'加载中...',
         forbidClick:true
       })
-      this._getMvRank()
+      this._getAllMv()
     },
      handlePlaylist(playList) {
       clearTimeout(this.timer)
@@ -100,6 +124,15 @@ export default {
      	path:`/videos/${item.id}`
      })
     }
+  },
+  watch:{
+    area(newValue,oldValue) {
+      if(newValue===oldValue) {
+        return
+      }
+      this.mv = []
+      this._getAllMv()
+    }
   }
 }
 
@@ -109,7 +142,7 @@ export default {
 @import '~common/stylus/mixin.styl';
 .videos 
   position: fixed;
-  top: 100px;
+  top: 55px;
   bottom: 0;
   width: 100%;
   overflow: hidden;
@@ -119,8 +152,11 @@ export default {
     left 50%
     transform translateX(-50%)
   .video-content 
-    width: 100%;
-    height: 100%;
+    position fixed
+    top 100px
+    bottom 0
+    width 100%
+    overflow hidden
     .update-time 
     	padding-left: 20px;
     	line-height:40px;

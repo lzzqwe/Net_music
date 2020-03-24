@@ -39,6 +39,7 @@ export function loadSearch() {
 }
 // 保存 搜索历史
 export function saveSearch(query) {
+    // 如果没有 则返回空数组
     let searchs = storage.get(SEARCH_KEY,[])
     insertArray(searchs,query,(item) => {
       return item == query
@@ -46,6 +47,7 @@ export function saveSearch(query) {
     storage.set(SEARCH_KEY,searchs)
     return searchs
 }
+
 // 清空某个搜索历史
 export function deleteSearch(query) {
     let searchs = storage.get(SEARCH_KEY,[])

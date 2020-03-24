@@ -5,7 +5,7 @@ export const getlunbo = () => ajax(BASE + '/banner', { type: 1 })
 // 获取推荐歌单
 export const getRecommend = () => ajax(BASE + '/personalized?limit=6')
 
-// /playlist/detail
+//获取歌单详情
 export const getdetail = ({ id }) => ajax(BASE + '/playlist/detail', { id })
 //获取热门歌手列表
 export const getHotSinger = () => ajax(BASE + '/top/artists?offset=0')
@@ -42,3 +42,9 @@ export const getMvRank = ({offset,limit}) => ajax(BASE + '/top/mv',{limit,offset
 export const getMvData = ({mvid}) => ajax(BASE + '/mv/detail',{mvid})
 // 获取mv热门评论
 export const getMvComment = ({id}) => ajax(BASE + '/comment/mv',{id})
+//获取视频标签列表
+export const getVideoGroup = () => ajax(BASE + '/video/group/list')
+//获取视频标签下的视频
+export const getVideo = ({id}) => ajax(BASE + '/video/group',{id})
+///   全部 mv  mv/all?area=港台
+export const getAllMv = ({area,limit,offset,order}) => ajax(BASE + '/mv/all',{area,limit,offset,order})

@@ -27,10 +27,10 @@
          </div>
        </li>
       </ul>
-      <h1 class="official-title">推荐榜</h1>
+      <h1 v-if='topList.length' class="official-title">推荐榜</h1>
       <div class="rank-list">
         <div :key='index' @click="selectRankItem(item,index)" class="rank-list-item" v-for="(item,index) in topList">
-          <img width="100%" v-lazy="item.coverImgUrl">
+          <img class="rank-list-img" width="100%" v-lazy="item.coverImgUrl">
           <p class="rank-list-name">{{item.name}}</p>
           <p class="rank-update">{{item.updateFrequency}}</p>
         </div>
@@ -127,6 +127,8 @@ export default {
         width 32.5%
         position relative
         padding-bottom 10px
+        .rank-list-img
+          border-radius 5px
         .rank-list-name
           line-height 1.5
           font-size 12px
@@ -157,9 +159,9 @@ export default {
         flex 1
         margin-left 10px
         font-size 10px
-        background #333
+        background #000
         padding 10px 0 0 10px
-        color rgba(255,255,255,0.3)
+        border-radius 27px
         .songlist-item
           no-wrap()
           line-height 26px

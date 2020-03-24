@@ -3,7 +3,7 @@
 	:title='title'
 	:bgImage='bgImage'
 	:songs='songlist'
-	></music-list>	
+	></music-list>
 </template>
 <script>
 const MAX = 500
@@ -31,16 +31,16 @@ export default {
 			}
         const {code,playlist} = await getdetail({id:this.disc.id})
         if(code === 200) {
-          this._nomalizeSongs(playlist) 
-        }		
+          this._nomalizeSongs(playlist)
+        }
 		},
 		async _nomalizeSongs(list) {
 			const trackIds = list.trackIds.map(({id}) => id)
-
+      console.log(trackIds);
 			const copyTrackIds = trackIds.slice(0,MAX)
 
 			const {songs} = await getSongDetail(copyTrackIds)
-			
+
 			const songList = songs.map(({id,name,ar,al,dt}) => {
 				return createSong({
 					id,
@@ -62,10 +62,7 @@ export default {
 			return this.disc.name
 		},
 		bgImage() {
-		  if(this.disc.coverImgUrl) {
-		  	return this.disc.coverImgUrl
-		  } 
-		  return this.disc.picUrl
+		  return this.disc.coverImgUrl?this.disc.coverImgUrl:this.disc.picUrl
 		}
 	}
 }
@@ -79,5 +76,3 @@ export default {
 	z-index 10
 	background #333
 </style>
-
-

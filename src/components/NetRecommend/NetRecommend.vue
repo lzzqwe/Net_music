@@ -140,7 +140,8 @@ export default {
         type:0
       })
       if(code===200) {
-        const list = data.slice(0,10)
+        const lis = data.slice(0,10)
+        const list = lis
         // this.newList = list
         this.newList = this._nomalize(list)
       }
@@ -206,7 +207,7 @@ export default {
   font-size 12px
 .recommend
   position fixed
-  top 100px
+  top 55px
   bottom 0
   width 100%
   .recommend-content

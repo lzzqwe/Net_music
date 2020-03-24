@@ -3,10 +3,6 @@
       <router-link to='/mine' class="mine">
           <span class="iconfont iconyonghu"></span>
       </router-link>
-      <div>
-        <div class="icon" :style="{backgroundImage:'url('+img+')'}"></div>
-        <h1 class="text">网易云音乐</h1>
-      </div>
        <router-link to='/search' class="mine">
           <span class="iconfont iconsousuo"></span>
       </router-link>
@@ -37,7 +33,6 @@ export default {
     width 30px
     height 32px
     background-size 30px 32px
-    bg-image('./logo')
     vertical-align middle
     margin-right 10px
   .text
