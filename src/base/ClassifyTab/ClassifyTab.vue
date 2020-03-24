@@ -1,7 +1,7 @@
 <template>
   <base-scroll v-if="this.tabs.length" :data="this.tabs" :scrollX="scrollX" ref="tabsSinger" class="tab-item">
     <ul :style="{width:width+'px'}" class="tab-item-ls">
-      <span>{{ title }}:</span>
+      <span class="classify-title">{{ title }}:</span>
       <li
         ref="tabItem"
         :class="{active:index===nowIndex}"
@@ -58,6 +58,8 @@ export default {
   margin-bottom 5px
   .tab-item-ls
     display flex
+    .classify-title
+      font-size 16px
     .item-ls-in
       padding 0 5px
       font-size 12px

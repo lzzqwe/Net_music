@@ -112,6 +112,4 @@ export default {
   line-height:30px;
   font-size:$font-size-medium;
   color:$color-theme;
-
-
 </style>

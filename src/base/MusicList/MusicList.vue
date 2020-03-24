@@ -176,6 +176,7 @@ export default {
     line-height 40px
     text-align center
     z-index 14
+    font-size 16px
   .bg-img
     padding-top 70%
     height 0

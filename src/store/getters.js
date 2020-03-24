@@ -1,41 +1,28 @@
 export default {
-    singer(state) {
-      return state.singer
-    },
-    disc(state) {
-      return state.disc
-    },
-    topList(state) {
-      return state.topList
-    },
-    playList(state) {
-      return state.playList
-    },
-    fullscreen(state) {
-      return state.fullscreen
-    },
-    sequenceList(state) {
-      return state.sequenceList 
-    },
-    currentIndex(state) {
-      return state.currentIndex
-    },
-    currentSong(state) {
-      return state.playList[state.currentIndex] || {}
-    },
-    playing(state) {
-      return state.playing
-    },
-    mode(state) {
-      return state.mode
-    },
-    searchHistory(state) {
-      return state.searchHistory
-    },
-    playHistory(state) {
-      return state.playHistory
-    },
-    favoriteList(state) {
-      return state.favoriteList
-    }
+  singer: state => state.singer,
+
+  disc: state => state.disc,
+  
+  topList: state => state.topList,
+
+  playList: state => state.playList,
+
+  fullscreen: state => state.fullscreen,
+
+  sequenceList: state => state.sequenceList,
+
+  currentIndex: state => state.currentIndex,
+
+  currentSong: state => state.playList[state.currentIndex] || {},
+
+  playing: state => state.playing,
+
+  mode: state => state.mode,
+
+  searchHistory: state => state.searchHistory,
+
+  playHistory: state => state.playHistory,
+
+  favoriteList: state => state.favoriteList
+
 }

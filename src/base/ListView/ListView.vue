@@ -11,7 +11,7 @@
             v-for="(item,index) in data"
             @click="selectItem(item)"
             >
-             <img class="item-img" width="50" height="50" v-lazy="item.picUrl" alt="">
+             <img class="item-img" v-lazy="item.picUrl" alt="">
              <span class="name">{{ item.name }}</span>
            </li>
          </ul>
@@ -68,6 +68,8 @@ export default {
         border-radius 50%
         vertical-align middle
         margin-right 20px
+        width 50px
+        height 50px
       .name
         font-size 14px
   .shortcut-list

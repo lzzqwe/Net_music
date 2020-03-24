@@ -1,7 +1,7 @@
 <template>
     <div class="back">
        <span @click="Back" class="iconfont iconyoujiantou"></span>
-       <span style="margin-left:15px">{{title}}</span>
+       <span class="back-title">{{title}}</span>
     </div>
 </template>
 <script>
@@ -33,5 +33,8 @@ export default {
   .iconyoujiantou
     color $color-theme
     margin-left 20px
-    font-size 20px 
+    font-size 20px
+  .back-title
+    font-size 16px
+    margin-left 15px   
 </style>

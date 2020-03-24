@@ -32,7 +32,7 @@
          <div class="recommend-list">
            <h5 class="title">热门歌单推荐</h5>
            <div class='recommend-sub-title'>
-             <h3>为你精挑细选</h3>
+             <h3 class="good-listen-title">为你精挑细选</h3>
              <router-link tag='div' to='/list' class='moretext'>查看更多</router-link>  
            </div>  
            <van-swipe :autoplay="5000" @change="onChange" :stop-propagation='false'>
@@ -54,11 +54,11 @@
 		       <div class="selection">
 			        <h5 class="title">风格推荐</h5>
 			        <div class='recommend-sub-title'>
-			          <h3>好听的话语歌曲精选</h3>
+			          <h3 class="good-listen-title">好听的话语歌曲精选</h3>
                 <!-- <router-link tag='div' to='/newSong' class='moretext'>更多新歌</router-link>  -->
 			        </div>
 			        <div @click='selectSongItem(item,index)' :key='index' class="song-select" v-for="(item,index) in newList">
-			     	   <img class="song-img" width="60" height="60" :src="item.image" alt="">
+			     	   <img class="song-img" :src="item.image" alt="">
                <div class="sub-song">
                  <div class="songs-name">
                    <span class="songs-title">{{ item.name }}</span>
@@ -244,6 +244,8 @@ export default {
         box-sizing border-box
         height 40px
         align-items center
+        .good-listen-title
+          font-size 18px
         .moretext
           border 1px solid $color-theme-d
           padding 0 5px
@@ -259,6 +261,7 @@ export default {
           .song-img
             margin-right 10px
             width 60px
+            height 60px
             flex 0 0 60px
             border-radius 5px
           .sub-song
@@ -270,6 +273,7 @@ export default {
               line-height 35px
               .songs-title
                 margin-right 10px
+                font-size 14px
               .singer-name
                 font-size 10px
                 color $color-theme-d

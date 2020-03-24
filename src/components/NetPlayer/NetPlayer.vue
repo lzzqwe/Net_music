@@ -95,8 +95,6 @@
           <img
             :class="cdCls"
             class="img-icon"
-            width="40"
-            height="40px"
             :src="currentSong.image"
             alt
           />
@@ -109,10 +107,10 @@
           <van-circle
           v-model="currentRate1"
           :speed="100"
-          :size='30'
           :color='color'
           :rate="rate"
           :stroke-width="60"
+          class="circle"
           >
           <span class="icon-mini" @click.stop="togglePlaying" :class="miniPlayIcon"></span>
           </van-circle>
@@ -127,7 +125,7 @@
     	<div v-show='flag' class='comment'>
         <div class="back">
            <span @click="Back" class="iconfont iconyoujiantou"></span>
-           <span style="margin-left:15px">{{title}}</span>
+           <span class="back-title-sub" style="margin-left:15px">{{title}}</span>
         </div>
         <base-scroll :delayTime='delayTime' :data='comment' class="review">
           <div>

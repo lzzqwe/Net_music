@@ -14,13 +14,15 @@
     "better-scroll": "^1.15.2",
     "core-js": "^2.6.5",
     "create-keyframe-animation": "^0.1.0",
-    "good-storage": "^1.1.0",
     "lyric-parser": "^1.0.1",
+    "store": "^2.0.12",
     "vant": "^2.0.9",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
-    "xgplayer": "^2.4.9"
+    "xgplayer": "^2.4.9",
+    "amfe-flexible": "^2.2.1",
+    "postcss-pxtorem": "^4.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

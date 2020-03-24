@@ -1,5 +1,11 @@
 import axios from 'axios'
 
+import Vue from 'vue'
+import {
+    Toast
+} from 'vant'
+Vue.use( Toast)
+
 export default function ajax(url, data = {}, type = 'GET') {
   return new Promise((resolve, reject) => {
     let promise
@@ -14,6 +20,7 @@ export default function ajax(url, data = {}, type = 'GET') {
       resolve(res.data)
     }, (err) => {
       reject(err);
+      Toast('服务器请求失败')
     })
   })
 }

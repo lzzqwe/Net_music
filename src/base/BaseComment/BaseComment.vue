@@ -3,7 +3,7 @@
     <div v-show='flag' class='comment'>
       <div class="back">
          <span @click="Back" class="iconfont iconyoujiantou"></span>
-         <span style="margin-left:15px">{{title}}</span>
+         <span class="back-sub-title" style="margin-left:15px">{{title}}</span>
       </div>
       <base-scroll :delayTime='delayTime' :data='list' class='comment-list'>
         <div class="list">
@@ -80,6 +80,8 @@ import BaseScroll from 'base/BaseScroll/BaseScroll'
     z-index 10
     background-color $color-background
     width 100%
+    .back-sub-title
+      font-size 16px
     .iconyoujiantou
       color $color-theme
       margin-left 20px

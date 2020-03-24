@@ -57,6 +57,7 @@ export default {
     .song-index
       margin-right 10px
       color $color-theme-d
+      font-size 12px
 	.song-title
       .song-name
         margin-bottom 10px

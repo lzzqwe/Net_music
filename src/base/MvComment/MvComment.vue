@@ -83,7 +83,6 @@ export default {
       line-height: 25px;
       font-size: $font-size-medium;
       color: $color-theme;
-      font-weight: 600;
       margin-left: 30px;
       padding-bottom: 10px;
 </style>
