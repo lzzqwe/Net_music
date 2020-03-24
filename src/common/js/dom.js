@@ -7,7 +7,15 @@ export function getData(el,name,val) {
 }
 
 let elementStyle = document.createElement('div').style
-
+// webkit-，-moz-，-ms-，-o-具体代表的浏览器如下：
+//
+// -webkit-代表chrome、safari私有属性
+//
+// -moz-代表firefox浏览器私有属性
+//
+// -ms-代表IE浏览器私有属性
+//
+// -o-代表Operai私有属性
 let vendor = (() => {
   let transformName = {
     webkit:'webkitTransform',
@@ -28,7 +36,7 @@ export function prefixStyle(style) {
    if(vendor == false) {
      return false
    } else if(vendor == 'standard') {
-     return style 
+     return style
    } else {
      return vendor + style.charAt(0).toUpperCase() + style.substring(1)
    }

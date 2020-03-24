@@ -29,7 +29,7 @@
       </ul>
       <h1 v-if='topList.length' class="official-title">推荐榜</h1>
       <div class="rank-list">
-        <div :key='index' @click="selectRankItem(item,index)" class="rank-list-item" v-for="(item,index) in topList">
+        <div :key='index' @click="selectRankItem(item,index=index+4)" class="rank-list-item" v-for="(item,index) in topList">
           <img class="rank-list-img" width="100%" v-lazy="item.coverImgUrl">
           <p class="rank-list-name">{{item.name}}</p>
           <p class="rank-update">{{item.updateFrequency}}</p>

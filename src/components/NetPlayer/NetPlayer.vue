@@ -106,9 +106,9 @@
           <p class="desc">{{ currentSong.singer }}</p>
         </div>
         <div class="control">
-          <van-circle 
+          <van-circle
           v-model="currentRate1"
-          :speed="100" 
+          :speed="100"
           :size='30'
           :color='color'
           :rate="rate"
@@ -148,20 +148,36 @@
     ></audio>
   </div>
 </template>
+<!-- onplay 当媒介数据将要开始播放时运行脚本
+onended 当媒介已抵达结尾时运行脚本
+ontimeupdate 当媒介改变其播放位置时运行脚本 -->
 <script>
 import animations from "create-keyframe-animation";
+
 import Lyric from "lyric-parser";
+
 import BaseScroll from "base/BaseScroll/BaseScroll";
+
 import { prefixStyle } from "common/js/dom";
+
 import { mapGetters, mapMutations, mapActions } from "vuex";
+
 import MvComment from 'base/MvComment/MvComment'
+
 import { getLyric } from "api/index.js";
+
 import ProgressBar from "base/ProgressBar/ProgressBar";
+
 import { playMode } from "common/js/config";
+
 import { shuffle } from "common/js/until";
+
 import PlayList from "base/PlayList/PlayList";
+
 const transform = prefixStyle("transform");
+
 const transitionDuration = prefixStyle("transitionDuration");
+
 const format = rate => Math.min(Math.max(rate, 0), 100);
 export default {
   name: "player",
@@ -183,10 +199,22 @@ export default {
       hotComments:[],
       delayTime:1000
     };
-  },
+  }, // 为什么要在create中定义 因为不需要getter 和setter 函数
   created() {
     this.touch = {};
   },
+  /*
+  *对于任何复杂逻辑，你都应当使用计算属性。
+  不同的是计算属性是基于它们的响应式依赖进行缓存的。
+  只在相关响应式依赖发生改变时它们才会重新求值。
+  这就意味着只要 message 还没有发生改变，多次访问 reversedMessage
+  计算属性会立即返回之前的计算结果，而不必再次执行函数。
+
+  我们为什么需要缓存？假设我们有一个性能开销比较大的计算属性 A，
+  它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 A 。
+  如果没有缓存，我们将不可避免的多次执行 A 的 getter！
+  如果你不希望有缓存，请用方法来替代。
+  */
   computed: {
     percent() {
       return this.currentTime / this.currentSong.duration;
@@ -387,8 +415,11 @@ export default {
       this.songReady = false;
     },
     loop() {
+      // 当前音乐的播放时长
       this.$refs.audio.currentTime = 0;
+      // 播放当前音乐
       this.$refs.audio.play();
+
       if (this.currentLyric) {
         this.currentLyric.seek(0);
       }
@@ -440,7 +471,7 @@ export default {
       }).catch((e) => {
          this.currentLyric = null
          this.playingLyric = ''
-         this.currentLineNum = 0 
+         this.currentLineNum = 0
       })
     },
     getComment() {
@@ -463,7 +494,7 @@ export default {
       this.playingLyric = txt;
     },
     middleTouchStart(e) {
-      //初始化标识位
+      //初始化标识位 标识已经初始化过了
       this.touch.initiated = true;
       const touch = e.touches[0];
       this.touch.startX = touch.pageX;
@@ -488,11 +519,11 @@ export default {
       );
       console.log(offsetWidth);
       this.touch.percent = Math.abs(offsetWidth / window.innerWidth);
-      this.$refs.lyricList.$el.style.transform = `translateX(${offsetWidth}px)`;
-      this.$refs.lyricList.$el.style.transitionDuration = 0;
+      this.$refs.lyricList.$el.style[transform] = `translateX(${offsetWidth}px)`;
+      this.$refs.lyricList.$el.style[transitionDuration] = 0;
       this.$refs.middleL.style.opacity = 1 - this.touch.percent;
 
-      this.$refs.middleL.style.transitionDuration = 0;
+      this.$refs.middleL.style[transitionDuration] = 0;
     },
     middleTouchEnd(e) {
       let offsetWidth;
@@ -518,10 +549,10 @@ export default {
         }
       }
       const time = 300;
-      this.$refs.lyricList.$el.style.transform = `translateX(${offsetWidth}px)`;
-      this.$refs.lyricList.$el.style.transitionDuration = `${time}ms`;
+      this.$refs.lyricList.$el.style[transform] = `translateX(${offsetWidth}px)`;
+      this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`;
       this.$refs.middleL.style.opacity = opacity;
-      this.$refs.middleL.style.transitionDuration = `${time}ms`;
+      this.$refs.middleL.style[transitionDuration] = `${time}ms`;
       this.touch.initiated = false;
     },
     ...mapMutations([
