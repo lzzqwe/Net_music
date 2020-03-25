@@ -6,7 +6,7 @@
        <div ref="listGroup" class="list-group">
          <ul>
            <li
-            class="item" 
+            class="item border-1px" 
             :key='index' 
             v-for="(item,index) in data"
             @click="selectItem(item)"
@@ -49,11 +49,12 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import '~common/stylus/mixin.styl';
 .list-view
   width 100%
   overflow hidden
   position fixed
-  top 90px
+  top 140px
   bottom 0
   .list-group
     .title
@@ -63,13 +64,15 @@ export default {
       background #333
       font-size 12px
     .item
-      padding 30px 0 0 20px
+      margin 20px 20px 0 20px
+      border-1px(#FFEC73)
       .item-img
         border-radius 50%
         vertical-align middle
         margin-right 20px
         width 50px
         height 50px
+        margin-bottom 5px
       .name
         font-size 14px
   .shortcut-list

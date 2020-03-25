@@ -15,7 +15,7 @@
             <span class="like-count">{{ item.likedCount }}</span><span class="iconfont icondianzan"></span>
           </div>
         </div>
-        <p class="appraisal-content van-hairline--bottom">{{ item.content }}</p>
+        <p class="appraisal-content border-1px">{{ item.content }}</p>
       </li>
     </ul>
     <!-- <div class="loading-container" v-show='!hotComments.length'>
@@ -85,4 +85,5 @@ export default {
       color: $color-theme;
       margin-left: 30px;
       padding-bottom: 10px;
+      border-1px(#6A92D4);
 </style>
