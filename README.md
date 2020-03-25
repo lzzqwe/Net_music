@@ -54,7 +54,11 @@ node app.js // 服务端运行 访问 http://localhost:3000
 
 + better-scroll( better-scroll 是一款重点解决移动端（已支持 PC）各种滚动场景需求的插件 )
 
-+  FastClick（解决移动端 300ms 点击延迟）       
++   amfe-flexible (阿里手淘可伸缩布局方案amfe-flexible解决vue移动端适配)  
+
++   postcss-pxtorem( PostCSS的插件，用于将像素单元生成rem单位 )      
+
++  store(浏览器存储)
 
   # 项目结构目录
 
