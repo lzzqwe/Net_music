@@ -21,7 +21,7 @@
         <div
           @touchstart.prevent="middleTouchStart"
           @touchmove.prevent="middleTouchMove"
-          @touchend="middleTouchEnd"
+          @touchend.prevent="middleTouchEnd"
           class="middle"
         >
           <div ref="middleL" class="middle-l">

@@ -21,6 +21,10 @@
   </div>    
 </template>
 <script>
+// @touchstart.prevent="progressTouchStart"
+// @touchmove.prevent="progressTouchMove"
+// @touchend.prevent="progressTouchEnd"
+// 阻止移动端的默认事件 比如复制 黏贴 橡皮筋效果
 const progressBtnWidth = 16
 import {mapGetters} from 'vuex'
 export default {
