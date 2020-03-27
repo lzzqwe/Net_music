@@ -105,7 +105,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
       │  │      timg.jpg
       │  │      
       │  ├─PlayList
-      │  │      PlayList.styl
+      │  │      PlayList.less
       │  │      PlayList.vue  //播放列表组件
       │  │      
       │  ├─ProgressBar
@@ -143,13 +143,13 @@ node app.js // 服务端运行 访问 http://localhost:3000
       │  │      song.js //数据处理
       │  │      until.js //工具函数
       │  │      
-      │  └─stylus
-      │          base.styl //基础样式
-      │          font.styl //字体样式
-      │          index.styl //入口文件
-      │          mixin.styl // 样式混合
-      │          reset.styl // 样式初始化
-      │          variable.styl //样式主题
+      │  └─less
+      │          base.less //基础样式
+      │          font.less //字体样式
+      │          index.less //入口文件
+      │          mixin.less // 样式混合
+      │          reset.less // 样式初始化
+      │          variable.less //样式主题
       │          
       ├─components // 页面路由组件目录
       │  ├─NetDisc
@@ -164,7 +164,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
       │  ├─NetPlayer 
       │  │      disc.png
       │  │      needle.png
-      │  │      NetPlayer.styl
+      │  │      NetPlayer.less
       │  │      NetPlayer.vue //播放器组件
       │  │      
       │  ├─NetRank
@@ -177,7 +177,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
       │  │      NetRecommend.vue //推荐页面组件
       │  │      
       │  ├─NetSearch
-      │  │      NetSearch.styl
+      │  │      NetSearch.less
       │  │      NetSearch.vue // 搜索组件
       │  │      
       │  ├─NetSinger
