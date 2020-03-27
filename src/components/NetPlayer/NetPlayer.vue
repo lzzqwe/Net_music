@@ -30,7 +30,7 @@
                 <img class="currenImg" v-lazy="currentSong.image" alt />
               </div>
               <div class="baseCls" :class="neeldeCls">
-                <img class="neeldeImg" src="./needle.png" alt="">
+                <img class="neeldeImg" src="./needle.png" alt />
               </div>
             </div>
             <div class="playing-lyric">
@@ -57,11 +57,14 @@
             <span :class="{'active':currentShow==='lyric'}" class="dot"></span>
           </div>
           <div class="customer-handle">
-            <span :class="getFavoriteCls(currentSong)"
-                @click="handleFavorite(currentSong)" class="iconfont iconshoucangdianjihou"></span>
+            <span
+              :class="getFavoriteCls(currentSong)"
+              @click="handleFavorite(currentSong)"
+              class="iconfont iconshoucangdianjihou"
+            ></span>
             <span class="iconfont iconxiazai"></span>
-            <span  @click='_showComment' class="iconfont iconpinglun">
-              <span class='tag'>{{_totalCount()}}</span>
+            <span @click="_showComment" class="iconfont iconpinglun">
+              <span class="tag">{{_totalCount()}}</span>
             </span>
           </div>
           <progress-bar
@@ -92,12 +95,7 @@
     <transition name="van-slide-up">
       <div @click="open" class="mini-player" v-show="!fullscreen">
         <div class="icon">
-          <img
-            :class="cdCls"
-            class="img-icon"
-            :src="currentSong.image"
-            alt
-          />
+          <img :class="cdCls" class="img-icon" :src="currentSong.image" alt />
         </div>
         <div class="text">
           <h2 class="name">{{ currentSong.name }}</h2>
@@ -105,14 +103,14 @@
         </div>
         <div class="control">
           <van-circle
-          v-model="currentRate1"
-          :speed="100"
-          :color='color'
-          :rate="rate"
-          :stroke-width="60"
-          class="circle"
+            v-model="currentRate1"
+            :speed="100"
+            :color="color"
+            :rate="rate"
+            :stroke-width="60"
+            class="circle"
           >
-          <span class="icon-mini" @click.stop="togglePlaying" :class="miniPlayIcon"></span>
+            <span class="icon-mini" @click.stop="togglePlaying" :class="miniPlayIcon"></span>
           </van-circle>
         </div>
         <div @click.stop="showList" class="list">
@@ -121,17 +119,16 @@
       </div>
     </transition>
     <play-list ref="playList"></play-list>
-    <transition name='van-fade'>
-    	<div v-show='flag' class='comment'>
+    <transition name="van-fade">
+      <div v-show="flag" class="comment">
         <div class="back">
-           <span @click="Back" class="iconfont iconyoujiantou"></span>
-           <span class="back-title-sub" style="margin-left:15px">{{title}}</span>
+          <span @click="Back" class="iconfont iconyoujiantou"></span>
+          <span class="back-title-sub" style="margin-left:15px">{{title}}</span>
         </div>
-        <base-scroll :delayTime='delayTime' :data='comment' class="review">
+        <base-scroll :delayTime="delayTime" :data="comment" class="review">
           <div>
-          	<mv-comment :hotComments='hotComments'></mv-comment>
-        	  <mv-comment title="最近评论" :hotComments="comment">
-            </mv-comment>
+            <mv-comment :hotComments="hotComments"></mv-comment>
+            <mv-comment title="最近评论" :hotComments="comment"></mv-comment>
           </div>
         </base-scroll>
       </div>
@@ -160,7 +157,7 @@ import { prefixStyle } from "common/js/dom";
 
 import { mapGetters, mapMutations, mapActions } from "vuex";
 
-import MvComment from 'base/MvComment/MvComment'
+import MvComment from "base/MvComment/MvComment";
 
 import { getLyric } from "api/index.js";
 
@@ -187,15 +184,15 @@ export default {
       songReady: false, // 标识位
       playingLyric: "",
       currentShow: "cd",
-      currentRate1:0,
-      color:'red',
-      rate:0,
-      comment:[],
-      total:null,
-      title:'评论',
-      flag:false,
-      hotComments:[],
-      delayTime:1000
+      currentRate1: 0,
+      color: "red",
+      rate: 0,
+      comment: [],
+      total: null,
+      title: "评论",
+      flag: false,
+      hotComments: [],
+      delayTime: 1000
     };
   }, // 为什么要在create中定义 因为不需要getter 和setter 函数
   created() {
@@ -220,7 +217,7 @@ export default {
     playIcon() {
       return this.playing ? "iconfont iconbofang3" : "iconfont iconbofang2";
     },
-     miniPlayIcon() {
+    miniPlayIcon() {
       return this.playing ? "iconfont iconzanting" : "iconfont iconbofang4";
     },
     cdCls() {
@@ -248,11 +245,11 @@ export default {
     ])
   },
   methods: {
-  	showComment() {
-        this.flag = true
+    showComment() {
+      this.flag = true;
     },
     Back() {
-        this.flag = false
+      this.flag = false;
     },
     back() {
       this.SET_FULLSCREEN(false);
@@ -264,15 +261,15 @@ export default {
       }
     },
     _showComment() {
-      this.showComment()
+      this.showComment();
     },
     _totalCount() {
-      if(this.total>10000) {
-        return '1w+'
-      } else if(this.total>1000) {
-        return '999+'
+      if (this.total > 10000) {
+        return "1w+";
+      } else if (this.total > 1000) {
+        return "999+";
       }
-      return this.total
+      return this.total;
     },
     _getPosAndScale() {
       // mini播放器中的唱片的宽度 这是css中定义的
@@ -455,31 +452,34 @@ export default {
       this.$refs.playList.show();
     },
     getLyric() {
-      this.currentSong._getLyric().then(res => {
-      	// console.log('DSDSDSD')
-        // if (this.currentSong.lyric !== res.lrc.lyric) {
-        //   return;
-        // }
-        console.log(res)
-        this.currentLyric = new Lyric(res.lrc.lyric, this.handleLyric);
-        console.log(this.currentLyric);
-        if (this.playing) {
-          this.currentLyric.play();
-        }
-      }).catch((e) => {
-         this.currentLyric = null
-         this.playingLyric = ''
-         this.currentLineNum = 0
-      })
+      this.currentSong
+        ._getLyric()
+        .then(res => {
+          // console.log('DSDSDSD')
+          // if (this.currentSong.lyric !== res.lrc.lyric) {
+          //   return;
+          // }
+          console.log(res);
+          this.currentLyric = new Lyric(res.lrc.lyric, this.handleLyric);
+          console.log(this.currentLyric);
+          if (this.playing) {
+            this.currentLyric.play();
+          }
+        })
+        .catch(e => {
+          this.currentLyric = null;
+          this.playingLyric = "";
+          this.currentLineNum = 0;
+        });
     },
     getComment() {
-    	this.comment=[]
-      this.hotComments=[]
-      this.currentSong._getComment().then((res) => {
-        this.total = res.total
-        this.hotComments = res.hotComments
-        this.comment = res.comments
-      })
+      this.comment = [];
+      this.hotComments = [];
+      this.currentSong._getComment().then(res => {
+        this.total = res.total;
+        this.hotComments = res.hotComments;
+        this.comment = res.comments;
+      });
     },
     handleLyric({ lineNum, txt }) {
       this.currentLineNum = lineNum;
@@ -517,7 +517,9 @@ export default {
       );
       console.log(offsetWidth);
       this.touch.percent = Math.abs(offsetWidth / window.innerWidth);
-      this.$refs.lyricList.$el.style[transform] = `translateX(${offsetWidth}px)`;
+      this.$refs.lyricList.$el.style[
+        transform
+      ] = `translateX(${offsetWidth}px)`;
       this.$refs.lyricList.$el.style[transitionDuration] = 0;
       this.$refs.middleL.style.opacity = 1 - this.touch.percent;
 
@@ -547,7 +549,9 @@ export default {
         }
       }
       const time = 300;
-      this.$refs.lyricList.$el.style[transform] = `translateX(${offsetWidth}px)`;
+      this.$refs.lyricList.$el.style[
+        transform
+      ] = `translateX(${offsetWidth}px)`;
       this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`;
       this.$refs.middleL.style.opacity = opacity;
       this.$refs.middleL.style[transitionDuration] = `${time}ms`;
@@ -576,7 +580,7 @@ export default {
       if (newSong.id === oldSong.id) {
         return;
       }
-    //   this.rate = this.percent *100
+      //   this.rate = this.percent *100
       // 需要理解
       if (this.currentLyric) {
         this.currentLyric.stop();
@@ -587,7 +591,7 @@ export default {
       this.$nextTick(() => {
         this.$refs.audio.play();
         this.getLyric();
-        this.getComment()
+        this.getComment();
       });
       // clearTimeout(this.timer)
       // this.timer = setTimeout(() => {
@@ -604,11 +608,520 @@ export default {
       }, 1000);
     },
     percent(val) {
-      this.rate = val*100
+      this.rate = val * 100;
     }
   }
 };
 </script>
-<style lang="stylus" scoped>
-@import './NetPlayer.styl';
+<style lang="less" scoped>
+@import '~common/less/mixin.less';
+@import '~common/less/variable.less';
+
+.player {
+  .normal-player {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: #222;
+    z-index: 150;
+
+    &.normal-enter {
+      opacity: 0;
+
+      .top {
+        transform: translate3d(0, -100%, 0);
+      }
+
+      .bottom {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    &.normal-leave-to {
+      opacity: 0;
+
+      .top {
+        transform: translate3d(0, -100%, 0);
+      }
+
+      .bottom {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    &.normal-enter-active {
+      transition: all 0.4s;
+
+      .top, .bottom {
+        transition: all 0.4s cubic-bezier(0.34, 0.3, 1, 0.13);
+      }
+    }
+
+    &.normal-leave-active {
+      transition: all 0.4s;
+
+      .top, .bottom {
+        transition: all 0.4s cubic-bezier(0.34, 0.3, 1, 0.13);
+      }
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      filter: blur(25px);
+      z-index: -1;
+
+      .img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .top {
+      position: relative;
+      margin-bottom: 20px;
+
+      .album {
+        text-align: left;
+        line-height: 40px;
+        font-size: 16px;
+        width: 70%;
+        margin: 0 auto;
+        .no-wrap;
+      }
+
+      .singer {
+        font-size: 12px;
+        padding-left: 60px;
+      }
+
+      .back {
+        position: absolute;
+        top: 0;
+        left: 6px;
+
+        .iconshouqi {
+          display: block;
+          font-size: 22px;
+          padding: 10px;
+        }
+      }
+    }
+
+    .middle {
+      position: fixed;
+      top: 80px;
+      bottom: 170px;
+      width: 100%;
+      white-space: nowrap;
+
+      .middle-r {
+        width: 100%;
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+        overflow: hidden;
+
+        .lyric-wrapper {
+          text-align: center;
+          width: 80%;
+          margin: 0 auto;
+          overflow: hidden;
+
+          .lyric-item {
+            font-size: 14px;
+            line-height: 32px;
+            color: hsla(0, 0%, 100%, 0.5);
+
+            &.current {
+              color: #fff;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .middle-l {
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+        height: 0;
+        padding-top: 80%;
+        position: relative;
+
+        .playing-lyric {
+          text-align: center;
+          margin: 60px auto 0;
+          width: 80%;
+          overflow: hidden;
+
+          .txt {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            color: #ffffff;
+          }
+        }
+
+        .cd-wrapper {
+          position: absolute;
+          left: 10%;
+          top: 33px;
+          width: 80%;
+          height: 100%;
+
+          .baseCls {
+            width: 60px;
+            height: 144px;
+            position: absolute;
+            top: -65px;
+            left: 135px;
+            transform-origin: 0 0;
+            transition: transform 0.5s ease;
+
+            &.neeldeCls {
+              transform: rotate(-8deg);
+            }
+
+            &.rateCls {
+              transform: rotate(-40deg);
+            }
+
+            .neeldeImg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .cd {
+            width: 100%;
+            height: 100%;
+            // border 10px solid rgba(255,255,255,0.1)
+            box-sizing: border-box;
+            border-radius: 50%;
+            background-image: url('./disc.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+
+            &.cd_play {
+              animation: rotate 20s linear infinite;
+            }
+
+            &.cd_pause {
+              animation-play-state: paused;
+            }
+
+            .currenImg {
+              width: 60%;
+              height: 60%;
+              box-sizing: border-box;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+
+      .customer-handle {
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        display: flex;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding: 0 10%;
+
+        .iconshoucangdianjihou {
+          font-size: 25px;
+          color: @color-theme;
+
+          &.icon-favorite {
+            color: red;
+          }
+        }
+
+        .iconxiazai {
+          font-size: 25px;
+          color: @color-theme;
+        }
+
+        .iconpinglun {
+          font-size: 25px;
+          color: @color-theme;
+          position: relative;
+
+          .tag {
+            position: absolute;
+            font-size: 10px;
+            top: -13px;
+            right: -22px;
+          }
+        }
+      }
+
+      .dot-wrapper {
+        text-align: center;
+        font-size: 0;
+
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+          background-color: rgba(255, 255, 255, 0.5);
+          margin: 0 4px;
+          vertical-align: cnter;
+
+          &.active {
+            background-color: hsla(0, 0%, 100%, 0.5);
+            width: 20px;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      .progress-wrapper {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+        font-size: 12px;
+
+        .progress-bar-wrapper {
+          flex: 1;
+
+          .progress-bar {
+            height: 30px;
+
+            .bar-inner {
+              height: 4px;
+              margin: 0 5px;
+              background: rgba(0, 0, 0, 0.3);
+              position: relative;
+              top: 10px;
+
+              .progress {
+                position: absolute;
+                top: 0;
+                height: 100%;
+              }
+
+              .btn-wrapper {
+                position: absolute;
+                top: -13px;
+                left: -7px;
+                width: 30px;
+                height: 30px;
+
+                .btn {
+                  position: relative;
+                  width: 16px;
+                  height: 16px;
+                  border-radius: 50%;
+                  background: #ffcd32;
+                  box-sizing: border-box;
+                  border: 3px solid #fff;
+                  left: 7px;
+                  top: 7px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .operateors {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          flex: 1;
+          color: #ffcd32;
+
+          span {
+            font-size: 30px;
+          }
+        }
+
+        .i_right {
+          text-align: right;
+        }
+
+        .i_left {
+          text-align: left;
+
+          .icon-favorite {
+            color: red;
+          }
+        }
+
+        .i_center {
+          text-align: center;
+
+          .iconbofang3 {
+            font-size: 40px;
+          }
+
+          .iconbofang2 {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .comment {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 220;
+    background-color: @color-background;
+
+    .back {
+      height: 50px;
+      line-height: 50px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background-color: @color-background;
+      width: 100%;
+
+      .iconyoujiantou {
+        color: @color-theme;
+        margin-left: 20px;
+        font-size: 20px;
+      }
+
+      .back-title-sub {
+        font-size: 16px;
+      }
+    }
+
+    .review {
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+
+  .mini-player {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background: #333;
+    z-index: 151;
+    display: flex;
+    align-items: center;
+
+    &.mini-enter {
+      opacity: 0;
+    }
+
+    &.mini-leave-to {
+      opacity: 0;
+    }
+
+    &.mini-enter-active {
+      transition: all 0.4s;
+    }
+
+    &.mini-leave-active {
+      transition: all 0.4s;
+    }
+
+    .icon {
+      flex: 0 0 40px;
+      width: 40px;
+      padding: 0 10px 0 20px;
+
+      .img-icon {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+
+        &.cd_play {
+          animation: rotate 20s linear infinite;
+        }
+
+        &.cd_pause {
+          animation-play-state: paused;
+        }
+      }
+    }
+
+    .text {
+      flex: 1;
+      line-height: 20px;
+
+      .name {
+        font-size: 14px;
+        width: 200px;
+        .no-wrap;
+      }
+
+      .desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .control {
+      flex: 0 0 30px;
+      width: 30px;
+      margin-right: 15px;
+
+      .circle {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      .icon-mini {
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        font-size: 16px;
+      }
+    }
+
+    .list {
+      flex: 0 0 30px;
+      width: 30px;
+      padding-right: 6px;
+
+      .iconbofangliebiao {
+        font-size: 30px;
+      }
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
 </style>

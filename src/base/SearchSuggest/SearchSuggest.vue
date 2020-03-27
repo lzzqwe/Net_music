@@ -157,8 +157,8 @@ export default {
   }
 };
 </script>
-<style lang="stylus" scoped>
-@import '~common/stylus/mixin.styl';
+<style lang="less" scoped>
+@import "~common/less/mixin.less";
 
 .suggest {
   height: 100%;
@@ -178,13 +178,15 @@ export default {
 
       .name {
         font-size: 14px;
-        no-wrap();
+        .no-wrap;
       }
     }
   }
 }
 
-.suggest >>> .van-loading {
-  text-align: center;
+.suggest {
+  /deep/ .van-loading {
+    text-align: center;
+  }
 }
 </style>

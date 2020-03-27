@@ -31,21 +31,21 @@
                 class="hot-item"
                 :key="index"
                 v-for="(item,index) in hotkey "
-              >{{item.first}}</li> -->
-               <li
-               :key="index"
-               v-for="(item,index) in hotkey" 
-               class="hot-item"
-               @click="addQuery(item.searchWord)"
-               >
-                 <span class="rank-index">{{index+1}}</span>
-                 <div class="hot-title">
-                   <div>
-                     <span>{{item.searchWord}}</span>
-                   </div>
-                   <span>{{ item.content }}</span>
-                 </div>
-                 <span>{{ item.score }}</span>
+              >{{item.first}}</li>-->
+              <li
+                :key="index"
+                v-for="(item,index) in hotkey"
+                class="hot-item"
+                @click="addQuery(item.searchWord)"
+              >
+                <span class="rank-index">{{index+1}}</span>
+                <div class="hot-title">
+                  <div>
+                    <span>{{item.searchWord}}</span>
+                  </div>
+                  <span>{{ item.content }}</span>
+                </div>
+                <span>{{ item.score }}</span>
               </li>
               <!-- <li class="hot-item">
                  <span>1</span>
@@ -56,14 +56,19 @@
                    <span>原来独善其身,便陈大萨达</span>
                  </div>
                  <span>54454545</span>
-              </li>     -->
+              </li>-->
             </ul>
           </div>
         </div>
       </base-scroll>
     </div>
     <div ref="searchResult" class="search-result">
-      <search-suggest ref="suggest" @listScroll='blurInput' @select="_saveSeachHistory" :query="query"></search-suggest>
+      <search-suggest
+        ref="suggest"
+        @listScroll="blurInput"
+        @select="_saveSeachHistory"
+        :query="query"
+      ></search-suggest>
     </div>
     <transition>
       <router-view></router-view>
@@ -79,7 +84,7 @@ import BaseScroll from "base/BaseScroll/BaseScroll";
 import { playListMixin } from "common/js/mixin";
 export default {
   name: "search",
-  mixins:[playListMixin],
+  mixins: [playListMixin],
   data() {
     return {
       hotkey: [],
@@ -103,7 +108,7 @@ export default {
       const { code, data } = await getHotKey();
       if (code === 200) {
         // const { data } = result;
-        this.hotkey =data;
+        this.hotkey = data;
       }
     },
     // 监听query变化 顺便将query传过来
@@ -111,17 +116,17 @@ export default {
       this.query = query;
     },
     blurInput() {
-      this.$refs.searchBox.blur()
+      this.$refs.searchBox.blur();
     },
     searchBack() {
-      this.$router.back()
+      this.$router.back();
     },
     handlePlaylist(playList) {
       const bottom = playList.length > 0 ? "60px" : 0;
       this.$refs.shortCutWrapper.style.bottom = bottom;
-      this.$refs.shortCut.refresh()
-      this.$refs.searchResult.style.bottom = bottom
-      this.$refs.suggest.refresh()
+      this.$refs.shortCut.refresh();
+      this.$refs.searchResult.style.bottom = bottom;
+      this.$refs.suggest.refresh();
     },
     addQuery(query) {
       this.$refs.searchBox.setQuery(query);
@@ -154,10 +159,113 @@ export default {
   }
 };
 </script>
-<style lang="stylus" scoped>
-@import './NetSearch.styl';
+<style lang="less" scoped>
+body {
+  /deep/ .van-dialog__header {
+    padding-top: 0;
+  }
+}
 
-body>>>.van-dialog__header {
-  padding-top: 0;
+@import "~common/less/variable.less";
+
+.search {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: @color-background;
+
+  .search-box-wrapper {
+    padding: 10px;
+    display: flex;
+
+    .search-back {
+      width: 30px;
+      flex: 0 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .iconfanhui {
+        font-size: 20px;
+      }
+    }
+
+    .box {
+      flex: 1;
+    }
+  }
+
+  .shortCut-wrapper {
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+    z-index: 5;
+
+    .shortCut {
+      height: 100%;
+      overflow: hidden;
+
+      .hotKey {
+        margin: 20px 20px 0 20px;
+
+        .hot-item {
+          display: flex;
+          padding: 0 10px;
+          line-height: 24px;
+          background: #3f00ff;
+          margin-right: 5px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          font-size: 14px;
+
+          .rank-index {
+            margin-right: 6px;
+          }
+
+          .hot-title {
+            flex: 1;
+          }
+        }
+
+        .title {
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+      }
+
+      .search-history {
+        margin: 20px 20px 0 20px;
+
+        .title {
+          display: flex;
+          justify-content: space-between;
+          line-height: 40px;
+
+          .text {
+            font-size: 14px;
+          }
+        }
+
+        .search-list {
+          .search-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 40px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .search-result {
+    position: fixed;
+    top: 74px;
+    bottom: 0;
+    width: 100%;
+  }
 }
 </style>

@@ -46,7 +46,7 @@ node app.js // 服务端运行 访问 http://localhost:3000
 
 +  ES 6 / 7 （JavaScript 语言的下一代标准）
 
-+ stylus (css预处理器) 
++ less (css预处理器) 
 
 + Axios（AJAX网络请求）
 

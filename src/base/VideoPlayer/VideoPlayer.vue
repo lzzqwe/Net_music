@@ -1,11 +1,10 @@
 <template>
-  <div ref='player' class="video-player">
-  </div>
+  <div ref="player" class="video-player"></div>
 </template>
 <script>
-import Player from 'xgplayer'
+import Player from "xgplayer";
 export default {
-  name: 'disc',
+  name: "disc",
   props: {
     url: {
       type: String
@@ -13,42 +12,42 @@ export default {
     cover: {
       type: String
     },
-    autoplay:{
-      type:Boolean,
-      default:false
+    autoplay: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
-    this._initPlayer()
+    this._initPlayer();
   },
   methods: {
     _initPlayer() {
-      if (!this.url && !this.cover) return
+      if (!this.url && !this.cover) return;
       this.player = new Player({
         el: this.$refs.player,
         url: this.url,
         fluid: true,
         poster: this.cover,
-        autoplay:this.autoplay
-      })
+        autoplay: this.autoplay
+      });
     }
   },
   watch: {
     url(url, oldUrl) {
       if (url && url !== oldUrl) {
         if (!this.player) {
-          this._initPlayer()
+          this._initPlayer();
         } else {
-          this.player.src = url
-          this.player.reload()
+          this.player.src = url;
+          this.player.reload();
         }
       }
     }
   }
-}
-
+};
 </script>
-<style lang='stylus' scoped>
-.video-player
-  margin-top 50px
+<style lang='less' scoped>
+.video-player {
+  margin-top: 50px;
+}
 </style>

@@ -138,9 +138,9 @@ export default {
   }
 };
 </script>
-<style lang='stylus' scoped>
-@import '~common/stylus/variable.styl';
-@import '~common/stylus/mixin.styl';
+<style lang='less' scoped>
+@import '~common/less/variable.less';
+@import '~common/less/mixin.less';
 
 .videos {
   position: fixed;
@@ -167,7 +167,7 @@ export default {
       padding-left: 20px;
       line-height: 40px;
       font-weight: 600;
-      font-size: $font-size-medium;
+      font-size: @font-size-medium;
     }
 
     .mv-image {
@@ -183,7 +183,7 @@ export default {
         position: absolute;
         top: 5px;
         right: 25px;
-        font-size: $font-size-small;
+        font-size: @font-size-small;
 
         .iconbofang2 {
           margin-right: 5px;
@@ -196,16 +196,16 @@ export default {
         overflow: hidden;
 
         .song-name {
-          font-size: $font-size-medium;
-          no-wrap();
+          font-size: @font-size-medium;
+          .no-wrap;
           font-weight: 600;
           line-height: 40px;
-          color: $color-theme;
+          color: @color-theme;
         }
 
         .singer-name {
-          font-size: $font-size-small;
-          color: $color-text-d;
+          font-size: @font-size-small;
+          color: @color-text-d;
         }
       }
     }

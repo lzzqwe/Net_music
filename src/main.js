@@ -21,7 +21,8 @@ import router from './router'
 
 import store from './store/index'
 import 'amfe-flexible';
-import 'common/stylus/index.styl'
+// import 'common/stylus/index.styl'
+import 'common/less/index.less'
 import 'common/font/iconfont.css'
 
 Vue.use(Button)

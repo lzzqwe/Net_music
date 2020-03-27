@@ -1,40 +1,46 @@
 <template>
-    <div class="back">
-       <span @click="Back" class="iconfont iconyoujiantou"></span>
-       <span class="back-title">{{title}}</span>
-    </div>
+  <div class="back">
+    <span @click="Back" class="iconfont iconyoujiantou"></span>
+    <span class="back-title">{{title}}</span>
+  </div>
 </template>
 <script>
 export default {
-  name:'SlideBar',
-  props:{
-    title:{
-      type:String,
+  name: "SlideBar",
+  props: {
+    title: {
+      type: String
     }
   },
-  methods:{
+  methods: {
     Back() {
-      this.$router.back()
+      this.$router.back();
     }
   }
-}
+};
 </script>
-<style lang="stylus" scoped>
-@import '~common/stylus/variable.styl'
-.back
-  height 50px
-  line-height 50px
-  position absolute
-  top 0
-  left 0
-  z-index 10
-  background-color $color-background
-  width 100%
-  .iconyoujiantou
-    color $color-theme
-    margin-left 20px
-    font-size 20px
-  .back-title
-    font-size 16px
-    margin-left 15px   
+<style lang="less" scoped>
+@import '~common/less/variable.less';
+
+.back {
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: @color-background;
+  width: 100%;
+
+  .iconyoujiantou {
+    color: @color-theme;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
+  .back-title {
+    font-size: 16px;
+    margin-left: 15px;
+  }
+}
 </style>
