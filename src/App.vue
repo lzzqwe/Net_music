@@ -11,6 +11,9 @@
   </div>
 </template>
 <script>
+/**
+ * <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们
+ */
 import BaseTab from "base/BaseTab/BaseTab";
 import BaseHead from "base/BaseHead/BaseHead";
 import NetPlayer from "components/NetPlayer/NetPlayer";

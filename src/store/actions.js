@@ -19,13 +19,14 @@ import {
     SET_SEQUENCELIST
 } from './mutation-type'
 
-function findIndex(list, song) {
+
+const findIndex = (list, song) => {
     return list.findIndex((item) => {
         return item.id === song.id
     })
 }
 
-export const selectPlay = function({ commit, state }, { list, index }) {
+export const selectPlay = ({ commit, state }, { list, index }) =>{
     commit(SET_SEQUENCELIST, list)
     if (state.mode == playMode.random) {
         let randomList = shuffle(list)
@@ -39,7 +40,7 @@ export const selectPlay = function({ commit, state }, { list, index }) {
     commit(SET_PLAYING_STATE, true)
 }
 
-export const randomPlay = function({ commit }, { list }) {
+export const randomPlay = ({ commit }, { list }) => {
     commit(SET_PLAYING_STATE, playMode.random)
     commit(SET_SEQUENCELIST, list)
     let randomList = shuffle(list)
@@ -50,7 +51,7 @@ export const randomPlay = function({ commit }, { list }) {
 }
 
 
-export const insertSong = function({ commit, state }, song) {
+export const insertSong = ({ commit, state }, song) => {
     // 返回副本 修改state的值
     let playList = state.playList.slice()
 
@@ -104,19 +105,19 @@ export const insertSong = function({ commit, state }, song) {
     commit(SET_PLAYING_STATE, true)
 }
 // 保存搜索历史
-export const saveSearchHistory = function({ commit }, query) {
+export const saveSearchHistory = ({ commit }, query) =>{
     commit(SET_SEARCH_HISTORY, saveSearch(query))
 }
 // 删除某个搜索历史
-export const deleteSearchHistory = function({ commit }, query) {
+export const deleteSearchHistory = ({ commit }, query) =>{
     commit(SET_SEARCH_HISTORY, deleteSearch(query))
 }
 // 清空搜索历史
-export const clearSearchHistory = function({ commit }) {
+export const clearSearchHistory = ({ commit }) =>{
     commit(SET_SEARCH_HISTORY, clearSearch())
 }
 // 删除歌曲
-export const deleteSong = function({ commit, state }, song) {
+export const deleteSong = ({ commit, state }, song) =>{
     let playList = state.playList.slice()
 
     let sequenceList = state.sequenceList.slice()
@@ -143,22 +144,22 @@ export const deleteSong = function({ commit, state }, song) {
     commit(SET_PLAYING_STATE, playList > 0)
 }
 // 删除歌曲的列表
-export const deleteSongList = function({ commit }) {
+export const deleteSongList = ({ commit }) =>{
     commit(SET_PLAYLIST, [])
     commit(SET_SEQUENCELIST, [])
     commit(SET_CURRENTINDEX, -1)
     commit(SET_PLAYING_STATE, false)
 }
 // 保存播放歌曲的历史
-export const savePlayHistory = function({ commit }, song) {
+export const savePlayHistory = ({ commit }, song) =>{
     commit(SET_PLAY_HISTORY, savePlay(song))
 }
 
 // 保存收藏
-export const saveFavoriteList = function({ commit }, song) {
+export const saveFavoriteList = ({ commit }, song) =>{
     commit(SET_FAVORITE_LIST, saveFavorite(song))
 }
 // 删除收藏
-export const deleteFavoriteList = function({ commit }, song) {
+export const deleteFavoriteList = ({ commit }, song) =>{
     commit(SET_FAVORITE_LIST, deleteFavorites(song))
 }

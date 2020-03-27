@@ -35,22 +35,22 @@ Vue.use(Button)
     .use(Toast)
     .use(Dialog)
     .use(Circle)
-    .use(Lazyload,{
-        loading:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577964300&di=7c09f36a6088ba96f19efc39baab8bb0&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ffbe4ef9f8e6fd3f723f5d33559af795bb370868712aca-z8IkyD_fw658'
+    .use(Lazyload, {
+        loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577964300&di=7c09f36a6088ba96f19efc39baab8bb0&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ffbe4ef9f8e6fd3f723f5d33559af795bb370868712aca-z8IkyD_fw658'
     })
-// Vue.prototype.$toast = function(str) {
-//     return {
-//         fail: Toast.fail(str),
-//         success:Toast.success(str)
-//     }
-   
+    // Vue.prototype.$toast = function(str) {
+    //     return {
+    //         fail: Toast.fail(str),
+    //         success:Toast.success(str)
+    //     }
+
 // }
 Vue.prototype.$dialog = function() {
     Dialog.confirm({
         title: '标题',
         message: '是否要清空所有搜索历史?',
         confirmButtonText: "清空",
-        width:240
+        width: 240
     }).then(() => {
         this.$store.dispatch('clearSearchHistory')
     }).catch(() => {
@@ -62,7 +62,7 @@ Vue.prototype.$dialog_1 = function() {
         title: '标题',
         message: '是否要清空播放列表?',
         confirmButtonText: "清空",
-        width:240
+        width: 240
     }).then(() => {
         this.$store.dispatch('deleteSongList')
     }).catch(() => {

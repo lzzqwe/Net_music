@@ -1,9 +1,9 @@
 // 返回 min和max(包括max)之间的随机数
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
-// 洗牌函数
-export function shuffle(arr) {
+const getRandomInt = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    // 洗牌函数
+export const shuffle = (arr) => {
     let _arr = arr.slice()
     for (let i = 0; i < _arr.length; i++) {
         let j = getRandomInt(0, i)
@@ -41,7 +41,7 @@ export function debounce(func, delay) {
 //         return parseFloat(parseInt(num / 100000000) + '.' + decimal) + '亿'
 //     }
 // }
-export function getDate(dt) {
+export const getDate = (dt) => {
     // let dt = new Date(dc)
     //获取年
     // let year = dt.getFullYear();
@@ -60,5 +60,5 @@ export function getDate(dt) {
     // hour = hour < 10 ? "0" + hour : hour;
     // minute = minute < 10 ? "0" + minute : minute;
     // second = second < 10 ? "0" + second : second;
-    return  month + "月" + day + "日 ";
+    return month + "月" + day + "日 ";
 }

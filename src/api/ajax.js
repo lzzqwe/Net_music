@@ -4,23 +4,23 @@ import Vue from 'vue'
 import {
     Toast
 } from 'vant'
-Vue.use( Toast)
+Vue.use(Toast)
 
-export default function ajax(url, data = {}, type = 'GET') {
-  return new Promise((resolve, reject) => {
-    let promise
-    if (type === 'GET') {
-      promise = axios.get(url, {
-        params: data
-      })
-    } else {
-      promise = axios.post(url, data)
-    }
-    promise.then((res) => {
-      resolve(res.data)
-    }, (err) => {
-      reject(err);
-      Toast('服务器请求失败')
+export default (url, data = {}, type = 'GET') => {
+    return new Promise((resolve, reject) => {
+        let promise
+        if (type === 'GET') {
+            promise = axios.get(url, {
+                params: data
+            })
+        } else {
+            promise = axios.post(url, data)
+        }
+        promise.then((res) => {
+            resolve(res.data)
+        }, (err) => {
+            reject(err);
+            Toast('服务器请求失败')
+        })
     })
-  })
 }

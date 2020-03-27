@@ -19,3 +19,9 @@ export const letters = [
     { id: 'u', title: 'U' }, { id: 'v', title: 'V' }, { id: 'w', title: 'W' }, { id: 'x', title: 'X' },
     { id: 'y', title: 'Y' }, { id: 'z', title: 'Z' }
 ]
+export const navObj = [
+    { path: '/list', imgUrl: 'http://indust-creation.icci.top/nav1.png', title: '歌单', id: 1 },
+    { path: '/rank', imgUrl: 'http://indust-creation.icci.top/nav2.png', title: '排行榜', id: 2 },
+    { path: '/singer', imgUrl: 'http://indust-creation.icci.top/nav3.png', title: '歌手', id: 3 },
+    { path: '/project', imgUrl: 'http://indust-creation.icci.top/nav4.png', title: '项目地址', id: 4 }
+]

@@ -15,7 +15,7 @@
         @click="selectRankItem(item,index)"
         >
          <div class="icon">
-           <img width="100" height="100" v-lazy="item.coverImgUrl">
+           <img width="100%" height="100%" v-lazy="item.coverImgUrl">
          </div>
          <div class="songlist web-font">
            <ul>
