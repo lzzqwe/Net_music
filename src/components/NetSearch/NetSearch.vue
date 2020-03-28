@@ -26,12 +26,6 @@
           <div class="hotKey">
             <h1 class="title">热搜榜</h1>
             <ul>
-              <!-- <li
-                @click="addQuery(item.first)"
-                class="hot-item"
-                :key="index"
-                v-for="(item,index) in hotkey "
-              >{{item.first}}</li>-->
               <li
                 :key="index"
                 v-for="(item,index) in hotkey"
@@ -47,16 +41,6 @@
                 </div>
                 <span>{{ item.score }}</span>
               </li>
-              <!-- <li class="hot-item">
-                 <span>1</span>
-                 <div class="hot-title">
-                   <div>
-                     <span>姜子牙</span>
-                   </div>
-                   <span>原来独善其身,便陈大萨达</span>
-                 </div>
-                 <span>54454545</span>
-              </li>-->
             </ul>
           </div>
         </div>
@@ -77,11 +61,17 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
+
 import SearchBox from "base/SearchBox/SearchBox";
+
 import { getHotKey } from "api/index.js";
+
 import SearchSuggest from "base/SearchSuggest/SearchSuggest";
+
 import BaseScroll from "base/BaseScroll/BaseScroll";
+
 import { playListMixin } from "common/js/mixin";
+
 export default {
   name: "search",
   mixins: [playListMixin],
@@ -136,7 +126,6 @@ export default {
     },
     deleteAll() {
       this.$dialog();
-      // this.clearSearchHistory()
     },
     _saveSeachHistory() {
       this.saveSearchHistory(this.query);

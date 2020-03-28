@@ -10,11 +10,6 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      img: require("./chart-icon.svg")
-    };
-  }
 };
 </script>
 <style lang="less" scoped>

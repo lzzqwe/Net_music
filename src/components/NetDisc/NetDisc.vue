@@ -25,18 +25,21 @@ export default {
       if (!this.disc.id) {
         return this.$router.push("/recommend");
       }
+      //根据歌单id获取歌单详情 返回的trackIds是完整的 拿全部 trackIds 请求一次 song/detail 接口获取所有歌曲的详情
       const { code, playlist } = await getdetail(this.disc.id);
       if (code === 200) {
+        // 格式化数据
         this._nomalizeSongs(playlist);
       }
     },
     async _nomalizeSongs(list) {
-      const trackIds = list.trackIds.map(({ id }) => id);
-      console.log(trackIds);
+      //获取 trackIds
+      const trackIds = list.trackIds.map(item => item.id);
+      //浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
       const copyTrackIds = trackIds.slice(0, MAX);
-
+      //获取歌曲详情
       const { songs } = await getSongDetail(copyTrackIds);
-
+      //获取歌曲必须的对象参数  解构赋值
       const songList = songs.map(({ id, name, ar, al, dt }) => {
         return createSong({
           id,

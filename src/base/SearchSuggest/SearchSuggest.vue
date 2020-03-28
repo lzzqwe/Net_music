@@ -40,8 +40,6 @@ import { getSearch, getSongDetail } from "api/index.js";
 import { createSong } from "common/js/song";
 import BaseScroll from "base/BaseScroll/BaseScroll";
 import { mapMutations, mapActions } from "vuex";
-// import Singer from 'common/js/singer'
-// const TYPE_SINGER = 'TYPE_SINGER'
 export default {
   name: "Suggest",
   components: {
@@ -52,7 +50,6 @@ export default {
     return {
       offset: 0,
       result: [],
-      vkey: "",
       hasMore: true,
       pullup: true,
       limit: 15,

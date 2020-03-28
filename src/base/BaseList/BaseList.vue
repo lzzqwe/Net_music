@@ -9,7 +9,6 @@
     </div>
   </div>
 </template>
-<!-- v-lazy="item.picUrl" -->
 <script>
 export default {
   name: "BaseList",

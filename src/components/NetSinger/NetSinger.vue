@@ -13,12 +13,19 @@
 </template>
 <script>
 import { getSinger, getHotSinger } from "api/index.js";
+
 import ListView from "base/ListView/ListView";
+
 import ClassifyTab from "base/ClassifyTab/ClassifyTab";
+
 import SlideBar from "base/SlideBar/SlideBar";
+
 import { mapMutations } from "vuex";
+
 import { playListMixin } from "common/js/mixin.js";
+
 import { tabs, letters } from "common/js/config.js";
+
 export default {
   name: "singer",
   mixins: [playListMixin],

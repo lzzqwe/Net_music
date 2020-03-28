@@ -65,7 +65,9 @@ export default {
                     })
                 }
                 if (this.pullup) {
+                    //滚动结束触发 回调函数
                     this.scroll.on('scrollEnd', (pos) => {
+                        //scroll 纵向滚动的位置区间是 0 - maxScrollY，并且 maxScrollY 是负值。
                         if (pos.y <= this.scroll.maxScrollY + 50) {
                             this.$emit('scrollToEnd')
                         }

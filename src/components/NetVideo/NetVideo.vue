@@ -4,9 +4,6 @@
       <van-tab :key="index" v-for="(item,index) in this.tabs" :title="item.title">
         <base-scroll :data="mv" :pullup="pullup" class="video-content" @scrollToEnd="loadMoreVideo">
           <div>
-            <!--  <div v-show="updateTime" class="update-time">
-          <span>更新时间:</span><span>{{  updateTime|formateDate }}</span>
-            </div>-->
             <div
               @click="handleClick(item)"
               :key="index+ '-only'"

@@ -66,6 +66,7 @@ export default {
       // this.$refs.listContent.style.bottom = bottom
       document.querySelector(".list-content").style.bottom = bottom;
     },
+    //上拉触发
     loadMore() {
       if (!this.hasMore) {
         this.$toast("哥 已经到底了,没有数据了");
@@ -74,15 +75,17 @@ export default {
       this.offset = this.offset + 50;
       this.$toast.loading({
         message: "加载中...",
-        forbidClick: true
+        forbidClick: true //是否禁止背景点击
       });
       this._getPlayList();
     },
+    // 判断是否有更多的元素
     _hasMore(data) {
       if (!data.length) {
         this.hasMore = false;
       }
     },
+    //获取歌单风格种类
     async _getSongClassify() {
       const { all, sub, code } = await getSongClassify();
       if (code === 200) {
@@ -96,7 +99,7 @@ export default {
         this.offset
       );
       if (code === 200) {
-        this.playlist = this.playlist = this.playlist.concat(playlists);
+        this.playlist = this.playlist.concat(playlists);
         this._hasMore(this.playlist);
       }
     },

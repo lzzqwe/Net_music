@@ -25,11 +25,17 @@
 </template>
 <script>
 import SongList from "base/SongList/SongList";
+
 import BaseScroll from "base/BaseScroll/BaseScroll";
+
 import { mapGetters, mapActions } from "vuex";
+
 import NoResult from "base/NoResult/NoResult";
+
 import { playListMixin } from "common/js/mixin.js";
+
 import Song from "common/js/song.js";
+
 export default {
   name: "mine",
   mixins: [playListMixin],
