@@ -9,10 +9,6 @@
     :beforeScroll="beforeScroll"
     @beforeScroll="listScroll"
   >
-    <!-- <div :key="index" v-for="(item,index) in artist" class="singer">
-      <img width="60" height="60" :src="item.picUrl" alt="">
-      <span>{{ item.name }}</span>
-    </div>-->
     <ul class="suggest-list">
       <li
         class="suggest-item"
@@ -21,7 +17,7 @@
         @click="selectItem(item)"
       >
         <div class="icon">
-          <span :class="getIconCls(item)"></span>
+          <span :class="getIconCls()"></span>
         </div>
         <div class="name">
           <p class="text" v-html="getDisplayName(item)"></p>
@@ -70,6 +66,7 @@ export default {
   },
   methods: {
     async _search() {
+      // 重置scroll参数，以防数据积累,scroll破环
       this.offset = 0;
       this.hasMore = true;
       this.result = [];
@@ -89,10 +86,6 @@ export default {
       this.$refs.suggest.refresh();
     },
     _hasMore(data) {
-      // const songs = data.songs
-      // 如果没有数组 或是 歌曲数量大于总数
-      // this.hasMore = false
-      // console.log(songs)
       if (!data.length) {
         this.hasMore = false;
       }
@@ -106,22 +99,18 @@ export default {
       this._search();
     },
     getIconCls(item) {
-      if (item.type == "TYPE_SINGER") {
-        return "iconfont iconyonghu";
-      } else {
-        return "iconfont iconicon-test";
+      if(item) {
+       return "iconfont iconicon-test";
       }
+      
     },
     getDisplayName(item) {
-      if (item.type == "TYPE_SINGER") {
-        return item.singername;
-      } else {
+      if(item) {
         return `${item.name}-${item.artists[0].name}`;
-      }
+      } 
     },
     async selectItem(item) {
       const { songs } = await getSongDetail(item.id);
-      // console.log(songs)
       const songItem = songs.map(({ id, name, ar, al, dt }) => {
         return createSong({
           id,
@@ -133,9 +122,6 @@ export default {
           image: al.picUrl
         });
       });
-      // console.log(songList)
-      // console.log(item)
-      // this.songlist = songList
       this.insertSong(songItem[0]);
 
       //派发和搜素历史相关的事件

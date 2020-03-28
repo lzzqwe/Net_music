@@ -1,9 +1,4 @@
 import { getLyric, getComment } from 'api/lyric.js'
-import Vue from 'vue'
-import {
-    Toast
-} from 'vant'
-Vue.use(Toast)
 export default class Song {
     constructor({ id, mid, singer, name, album, duration, image, url }) {
         this.id = id
@@ -17,15 +12,13 @@ export default class Song {
     }
 
     _getLyric() {
-        // if (this.lyric) {
-        //     return Promise.resolve(this.lyric)
-        // }
+        if (this.lyric) {
+            return Promise.resolve(this.lyric)
+        }
         return new Promise((resolve, reject) => {
             getLyric(this.id).then((res) => {
-                // this.lyric = res.lrc.lyric
                 resolve(res)
             }).catch((err) => {
-                Toast('很抱歉没有歌词')
                 reject(err)
             })
         })
@@ -36,7 +29,6 @@ export default class Song {
         }
         return new Promise((resolve, reject) => {
             getComment(this.id).then((res) => {
-                // this.comment = res.hotComments.concat(res.comments)
                 resolve(res)
             }).catch((err) => {
                 Toast('没有评论')

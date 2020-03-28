@@ -159,8 +159,6 @@ import { mapGetters, mapMutations, mapActions } from "vuex";
 
 import MvComment from "base/MvComment/MvComment";
 
-import { getLyric } from "api/index.js";
-
 import ProgressBar from "base/ProgressBar/ProgressBar";
 
 import { playMode } from "common/js/config";
@@ -455,13 +453,7 @@ export default {
       this.currentSong
         ._getLyric()
         .then(res => {
-          // console.log('DSDSDSD')
-          // if (this.currentSong.lyric !== res.lrc.lyric) {
-          //   return;
-          // }
-          console.log(res);
           this.currentLyric = new Lyric(res.lrc.lyric, this.handleLyric);
-          console.log(this.currentLyric);
           if (this.playing) {
             this.currentLyric.play();
           }
@@ -470,6 +462,7 @@ export default {
           this.currentLyric = null;
           this.playingLyric = "";
           this.currentLineNum = 0;
+          this.$toast('很抱歉没有歌词')
         });
     },
     getComment() {
@@ -580,8 +573,6 @@ export default {
       if (newSong.id === oldSong.id) {
         return;
       }
-      //   this.rate = this.percent *100
-      // 需要理解
       if (this.currentLyric) {
         this.currentLyric.stop();
         this.currentTime = 0;
@@ -593,12 +584,6 @@ export default {
         this.getLyric();
         this.getComment();
       });
-      // clearTimeout(this.timer)
-      // this.timer = setTimeout(() => {
-      //   this.$refs.audio.play();
-      //   this.getLyric();
-      //   this.getComment()
-      // },1000)
     },
     playing(newPlaying) {
       // if (!newPlaying) { return }
