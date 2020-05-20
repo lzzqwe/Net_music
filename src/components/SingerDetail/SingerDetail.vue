@@ -6,7 +6,7 @@
   ></music-list> 
 </template>
 <script>
-import MusicList from 'base/MusicList/MusicList'
+import MusicList from 'base/MusicList/MusicList.vue'
 import {mapGetters} from 'vuex'
 import {getArtistSongs} from 'api/index.js'
 import {createSong} from 'common/js/song'

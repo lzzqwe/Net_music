@@ -43,3 +43,17 @@
     }
 
 }
+.border-none() {
+    position: relative;
+
+    &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-top: none;
+        content: '';
+    }
+
+}

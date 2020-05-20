@@ -42,12 +42,12 @@ export default {
   .mine {
     .iconyonghu {
       font-size: 20px;
-      color: @color-theme;
+      color: #212121;
     }
 
     .iconsousuo {
       font-size: 20px;
-      color: @color-theme;
+      color: #212121;
     }
   }
 }

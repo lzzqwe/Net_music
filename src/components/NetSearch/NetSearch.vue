@@ -2,7 +2,7 @@
   <div ref="search" class="search">
     <div class="search-box-wrapper">
       <div @click="searchBack" class="search-back">
-        <span class="iconfont iconfanhui"></span>
+        <span class="iconfont iconyoujiantou"></span>
       </div>
       <search-box class="box" @onchangeQuery="changeQuery" ref="searchBox"></search-box>
     </div>
@@ -18,7 +18,6 @@
               <ul>
                 <li class="search-item" :key="index" v-for="(item,index) in this.searchHistory">
                   <span @click="addQuery(item)">{{ item }}</span>
-                  <span @click="deletOne(item)" class="iconfont iconiconjia"></span>
                 </li>
               </ul>
             </div>
@@ -35,11 +34,11 @@
                 <span class="rank-index">{{index+1}}</span>
                 <div class="hot-title">
                   <div>
-                    <span>{{item.searchWord}}</span>
+                    <span class="search-word">{{item.searchWord}}</span>
                   </div>
-                  <span>{{ item.content }}</span>
+                  <span class="search-content">{{ item.content }}</span>
                 </div>
-                <span>{{ item.score }}</span>
+                <span class="search-score">{{ item.score }}</span>
               </li>
             </ul>
           </div>
@@ -62,13 +61,13 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 
-import SearchBox from "base/SearchBox/SearchBox";
+import SearchBox from "base/SearchBox/SearchBox.vue";
 
 import { getHotKey } from "api/index.js";
 
-import SearchSuggest from "base/SearchSuggest/SearchSuggest";
+import SearchSuggest from "base/SearchSuggest/SearchSuggest.vue";
 
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 
 import { playListMixin } from "common/js/mixin";
 
@@ -176,8 +175,9 @@ body {
       align-items: center;
       justify-content: center;
 
-      .iconfanhui {
+      .iconyoujiantou {
         font-size: 20px;
+        color: #333333;
       }
     }
 
@@ -204,7 +204,6 @@ body {
           display: flex;
           padding: 0 10px;
           line-height: 24px;
-          background: #3f00ff;
           margin-right: 5px;
           margin-bottom: 10px;
           border-radius: 5px;
@@ -212,16 +211,29 @@ body {
 
           .rank-index {
             margin-right: 6px;
+            color: #ff3a3a;
           }
 
           .hot-title {
             flex: 1;
+            .search-word {
+              color: #333333;
+              font-weight: 600;
+            }
+            .search-content {
+              color: #999999;
+            }
           }
+          .search-score {
+              color: #cccccc;
+            }
         }
 
         .title {
           margin-bottom: 10px;
           font-size: 18px;
+          color: #333333;
+          font-weight: 600;
         }
       }
 
@@ -234,16 +246,27 @@ body {
           line-height: 40px;
 
           .text {
-            font-size: 14px;
+            font-size: 16px;
+            color: #333333;
+            font-weight: 600;
+          }
+          .iconlajitong1 {
+            color: #b3b3b3;
           }
         }
 
         .search-list {
           .search-item {
-            display: flex;
+            display: inline-block;
             justify-content: space-between;
-            line-height: 40px;
+            line-height: 35px;
             font-size: 14px;
+            color: #313131;
+            padding: 0 10px;
+            margin-right: 10px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin-bottom: 5px;
           }
         }
       }

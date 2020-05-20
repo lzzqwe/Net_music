@@ -33,7 +33,7 @@
   </div>
 </template>
 <script>
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 import { getAllMv } from "api/index.js";
 import { getDate } from "common/js/until.js";
 import { playListMixin } from "common/js/mixin.js";
@@ -138,7 +138,17 @@ export default {
 <style lang='less' scoped>
 @import '~common/less/variable.less';
 @import '~common/less/mixin.less';
-
+// /deep/  {
+//    .van-tab--active {
+//      color: red !important;
+//    }
+//  }
+/deep/ [class*=van-hairline]::after {
+  border-color:#e5e5e5;
+}  
+/deep/ .van-tab--active  {
+  color: red !important;
+} 
 .videos {
   position: fixed;
   top: 55px;
@@ -197,12 +207,12 @@ export default {
           .no-wrap;
           font-weight: 600;
           line-height: 40px;
-          color: @color-theme;
+          color: #2f2f2f;
         }
 
         .singer-name {
           font-size: @font-size-small;
-          color: @color-text-d;
+          color: #2f2f2f;
         }
       }
     }

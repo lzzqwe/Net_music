@@ -31,10 +31,10 @@
   </base-scroll>
 </template>
 <script>
-import NoResult from "base/NoResult/NoResult";
+import NoResult from "base/NoResult/NoResult.vue";
 import { getSearch, getSongDetail } from "api/index.js";
 import { createSong } from "common/js/song";
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 import { mapMutations, mapActions } from "vuex";
 export default {
   name: "Suggest",
@@ -152,8 +152,10 @@ export default {
 
     .suggest-item {
       display: flex;
-      line-height: 22px;
-      padding-bottom: 20px;
+      line-height: 30px;
+      padding-bottom: 15px;
+      color: #333333;
+      .border-1px(#e5e5e5);
 
       .icon {
         margin-right: 10px;

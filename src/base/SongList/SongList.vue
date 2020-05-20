@@ -61,10 +61,14 @@ export default {
   .song-item {
     display: flex;
     padding: 10px 0;
+    .border-1px(#e5e5e5);
+    &:last-child {
+      .border-none();
+    }
 
     .song-index {
       margin-right: 10px;
-      color: @color-theme-d;
+      color: #949494;
       font-size: 12px;
     }
   }
@@ -75,6 +79,7 @@ export default {
     .song-name {
       margin-bottom: 10px;
       font-size: 14px;
+      color: #2f2f2f;
 
       &.active {
         color: red !important;
@@ -85,7 +90,7 @@ export default {
 
     .desc {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.3);
+      color:#969696;
       .no-wrap;
     }
   }

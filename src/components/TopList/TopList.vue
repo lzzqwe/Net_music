@@ -3,7 +3,7 @@
 </template>
 <script>
 const MAX = 500
-import MusicList from 'base/MusicList/MusicList'
+import MusicList from 'base/MusicList/MusicList.vue'
 
 import { getTopDetail,getSongDetail } from 'api/index.js'
 

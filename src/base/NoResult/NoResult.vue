@@ -31,8 +31,9 @@ export default {
   }
 
   .no-title {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 35px;
+    color: #2d2d2d;
   }
 }
 </style>

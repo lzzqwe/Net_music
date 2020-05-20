@@ -1,7 +1,7 @@
 <template>
   <div class="music-list">
     <div class="back" @click="back">
-      <span class="iconfont iconfanhui"></span>
+      <span class="iconfont iconyoujiantou"></span>
     </div>
     <h2 class="title">{{ title }}</h2>
     <div ref="bgImage" :style="bgStyle" class="bg-img">
@@ -29,9 +29,9 @@
   </div>
 </template>
 <script>
-import SongList from "base/SongList/SongList";
+import SongList from "base/SongList/SongList.vue";
 import { playListMixin } from "common/js/mixin.js";
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 import { prefixStyle } from "common/js/dom";
 const transform = prefixStyle("transform");
 // const backdrop = prefixStyle('backdrop-filter')
@@ -40,7 +40,8 @@ export default {
   name: "MusicList",
   mixins: [playListMixin],
   created() {
-    (this.probeType = 3), (this.listenScroll = true);
+    this.probeType = 3;
+    this.listenScroll = true;
   },
   data() {
     return {
@@ -103,7 +104,7 @@ export default {
     //  -262.5+40 = -222.5
     this.minTranlateY = -this.bgImageHeight + 40;
 
-    this.$refs.list.$el.style.top = `${this.bgImageHeight}px `;
+    this.$refs.list.$el.style.top = `${this.bgImageHeight}px`;
   },
   watch: {
     scrollY(newY) {
@@ -147,7 +148,6 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~common/less/variable.less';
-
 .music-list {
   position: fixed;
   top: 0;
@@ -162,11 +162,10 @@ export default {
     top: 10px;
     z-index: 15;
 
-    .iconfont {
+    .iconyoujiantou {
       font-size: 22px;
-      color: red;
       font-weight: 600;
-      color: #ffcd32;
+      color: #f5f9f3;
     }
   }
 
@@ -195,7 +194,7 @@ export default {
 
       .button {
         padding: 8px 20px;
-        border: 1px solid #ffcd32;
+        border: 1px solid #ffffff;
         border-radius: 10px;
         font-size: 10px;
         color: #ffcd32;

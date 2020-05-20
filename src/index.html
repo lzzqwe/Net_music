@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>netease_cloudmusic_128px_1186871_easyicon.net.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/net.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1325002_myop8zh0cn.css">
+    <title>music</title>
     <style>
         /*
       vw：1vw等于视口宽度的1%;vh：1vh等于视口高度的1%。
@@ -98,13 +98,9 @@
             }
         }
     </style>
-    <title>music</title>
 </head>
 
-<body class="web-font">
-    <noscript>
-      <strong>We're sorry but music doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
+<body>
     <div id="load">
         <p class="index-title">音樂的力量</p>
         <p class="index-icon"><svg t="1567819718363" class="icon" style="transform: translateY(40%)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1950" width="50" height="50">
@@ -120,7 +116,6 @@
       </svg>网易云音乐</p>
     </div>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
     <script>
         const load = document.getElementById('load')
 
@@ -148,6 +143,7 @@
             }, 5000);
         }
     </script>
+    <script src="./vue.dll.js"></script>
 </body>
 
 </html>

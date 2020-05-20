@@ -2,7 +2,7 @@ import { getLyric, getComment } from 'api/lyric.js'
 export default class Song {
     constructor({ id, mid, singer, name, album, duration, image, url }) {
         this.id = id
-        this.mid = mid
+        this.mid = mid // 专辑id
         this.singer = singer
         this.name = name
         this.album = album
@@ -12,7 +12,7 @@ export default class Song {
     }
 
     _getLyric() {
-        if (this.lyric) {
+        if (this.lyric) { //有时需要将现有对象转为 Promise 对象，Promise.resolve()方法就起到这个作用
             return Promise.resolve(this.lyric)
         }
         return new Promise((resolve, reject) => {

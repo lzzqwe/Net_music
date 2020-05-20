@@ -14,11 +14,11 @@
 <script>
 import { getSinger, getHotSinger } from "api/index.js";
 
-import ListView from "base/ListView/ListView";
+import ListView from "base/ListView/ListView.vue";
 
-import ClassifyTab from "base/ClassifyTab/ClassifyTab";
+import ClassifyTab from "base/ClassifyTab/ClassifyTab.vue";
 
-import SlideBar from "base/SlideBar/SlideBar";
+import SlideBar from "base/SlideBar/SlideBar.vue";
 
 import { mapMutations } from "vuex";
 

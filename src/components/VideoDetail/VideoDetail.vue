@@ -3,7 +3,7 @@
     <slide-bar :title="title"></slide-bar>
     <video-player ref="player" :autoplay="autoplay" :url="url" :cover="cover"></video-player>
     <div ref="comment" class="hot-comment">
-      <van-tabs v-model="active" swipeable>
+      <van-tabs background='rgb(220, 241, 247)' v-model="active" swipeable>
         <van-tab title="评论">
           <base-scroll :data="hotComments" class="hot">
             <div>
@@ -20,11 +20,11 @@
   </div>
 </template>
 <script>
-import BaseScroll from "base/BaseScroll/BaseScroll";
-import MvComment from "base/MvComment/MvComment";
-import SlideBar from "base/SlideBar/SlideBar";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
+import MvComment from "base/MvComment/MvComment.vue";
+import SlideBar from "base/SlideBar/SlideBar.vue";
 import { getDate } from "common/js/until.js";
-import VideoPlayer from "base/VideoPlayer/VideoPlayer";
+import VideoPlayer from "base/VideoPlayer/VideoPlayer.vue";
 import { getMvData, getMvComment } from "api/index.js";
 export default {
   name: "VideoDetail",
@@ -110,6 +110,6 @@ export default {
   padding: 20px;
   line-height: 30px;
   font-size: @font-size-medium;
-  color: @color-theme;
+  color: #282828;
 }
 </style>

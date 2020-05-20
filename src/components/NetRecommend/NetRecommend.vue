@@ -10,15 +10,17 @@
         <div class="sub">
           <template v-for="(item,index) in this.navObj">
             <router-link :key="index" :to="item.path" tag="div" class="sub-item">
-              <img class="sub-img" :src="item.imgUrl" alt />
+              <p class="sub-p">
+                <img class="sub-img" :src="item.imgUrl" alt />
+              </p>
+              
               <p class="sub-title">{{item.title}}</p>
             </router-link>
           </template>
         </div>
         <div class="recommend-list">
-          <h5 class="title">热门歌单推荐</h5>
           <div class="recommend-sub-title">
-            <h3 class="good-listen-title">为你精挑细选</h3>
+            <h3 class="good-listen-title">发现好歌单</h3>
             <router-link tag="div" to="/list" class="moretext">查看更多</router-link>
           </div>
           <van-swipe :autoplay="5000" @change="onChange" :stop-propagation="false">
@@ -28,7 +30,6 @@
             <div class="custom-indicator" slot="indicator">{{ current + 1 }}/2</div>
           </van-swipe>
           <div class="selection">
-            <h5 class="title">风格推荐</h5>
             <div class="recommend-sub-title">
               <h3 class="good-listen-title">好听的话语歌曲精选</h3>
             </div>
@@ -41,20 +42,21 @@
               <img class="song-img" :src="item.image" alt />
               <div class="sub-song">
                 <div class="songs-name">
-                  <span class="songs-title">{{ item.name }}</span>
-                  <span class="singer-name">{{ item.singer }}</span>
+                  <p class="songs-title">{{ item.name }}</p>
+                  <p class="singer-name">{{ item.singer }}</p>
                 </div>
                 <div class="play">
                   <span :class="{playShow:nowIndex===index}" class="iconfont iconbofang2"></span>
-                  <span :class="{active:nowIndex===index}" class="iconfont iconbofang3"></span>
+                  <span :class="{active:nowIndex===index}" class="iconfont iconvolume"></span>
                 </div>
               </div>
             </div>
+            <van-loading v-show="!newList.length" type="spinner" color="#1989fa">加载中...</van-loading>
           </div>
         </div>
-        <div class="loading-container" v-show="!result.length">
+        <!-- <div class="loading-container" v-show="!result.length">
           <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
-        </div>
+        </div> -->
       </div>
     </base-scroll>
     <transition name="fade">
@@ -65,9 +67,9 @@
 <script>
 import { getlunbo, getRecommend, getNewSong } from "api/index.js";
 
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 
-import BaseList from "base/BaseList/BaseList";
+import BaseList from "base/BaseList/BaseList.vue";
 
 import { mapMutations, mapGetters, mapActions } from "vuex";
 
@@ -122,8 +124,7 @@ export default {
     async _getNewSong() {
       const { data, code } = await getNewSong(this.type);
       if (code === 200) {
-        const lis = data.slice(0, 10);
-        const list = lis;
+        const list = data.slice(0, 15);
         this.newList = this._nomalize(list);
       }
     },
@@ -172,4 +173,7 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~./NetRecommend.less';
+/deep/ .van-loading {
+  text-align: center;
+}
 </style>

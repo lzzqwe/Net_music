@@ -1,7 +1,7 @@
 <template>
   <div ref="mine" class="mine">
     <div class="back" @click="back">
-      <span class="iconfont iconfanhui"></span>
+      <span class="iconfont iconyoujiantou"></span>
     </div>
     <van-tabs v-model="active" swipeable>
       <van-tab title="我喜欢的">
@@ -24,13 +24,13 @@
   </div>
 </template>
 <script>
-import SongList from "base/SongList/SongList";
+import SongList from "base/SongList/SongList.vue";
 
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 
 import { mapGetters, mapActions } from "vuex";
 
-import NoResult from "base/NoResult/NoResult";
+import NoResult from "base/NoResult/NoResult.vue";
 
 import { playListMixin } from "common/js/mixin.js";
 
@@ -75,7 +75,12 @@ export default {
 </script>
 <style lang='less' scoped>
 @import '~common/less/variable.less';
-
+/deep/ [class*=van-hairline]::after {
+  border-color:#e5e5e5;
+}
+/deep/ .van-tab--active  {
+  color: red !important;
+}    
 .mine {
   /deep/ .van-tabs {
     overflow: hidden;
@@ -110,11 +115,9 @@ export default {
     top: 10px;
     z-index: 15;
 
-    .iconfont {
+    .iconyoujiantou {
       font-size: 22px;
-      color: red;
-      font-weight: 600;
-      color: #ffcd32;
+      color: #333333;
     }
   }
 }

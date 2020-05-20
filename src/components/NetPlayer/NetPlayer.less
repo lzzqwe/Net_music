@@ -230,7 +230,7 @@
 
         .iconshoucangdianjihou {
           font-size: 25px;
-          color: @color-theme;
+          color: #c0c1bf;
 
           &.icon-favorite {
             color: red;
@@ -239,12 +239,12 @@
 
         .iconxiazai {
           font-size: 25px;
-          color: @color-theme;
+          color: #c0c1bf;
         }
 
         .iconpinglun {
           font-size: 25px;
-          color: @color-theme;
+          color: #c0c1bf;
           position: relative;
 
           .tag {
@@ -335,7 +335,7 @@
 
         .icon {
           flex: 1;
-          color: #ffcd32;
+          color: #c0c1bf;
 
           span {
             font-size: 30px;
@@ -384,7 +384,7 @@
       top: 0;
       left: 0;
       z-index: 10;
-      background-color: @color-background;
+      background-color: #764343;
       width: 100%;
 
       .iconyoujiantou {
@@ -410,12 +410,13 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 60px;
+    height: 56px;
     width: 100%;
-    background: #333;
+    background: #fafafa;
     z-index: 151;
     display: flex;
     align-items: center;
+    border-top: 1px solid #e0e0e0;
 
     &.mini-enter {
       opacity: 0;
@@ -437,7 +438,6 @@
       flex: 0 0 40px;
       width: 40px;
       padding: 0 10px 0 20px;
-
       .img-icon {
         border-radius: 50%;
         width: 40px;
@@ -460,30 +460,49 @@
       .name {
         font-size: 14px;
         width: 200px;
+        color: #222222;
         .no-wrap;
       }
 
       .desc {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.3);
+        color:#848484;
       }
     }
 
     .control {
-      flex: 0 0 30px;
-      width: 30px;
+      flex: 0 0 25px;
+      width: 25px;
       margin-right: 15px;
 
       .circle {
-        width: 30px !important;
-        height: 30px !important;
+        width: 25px !important;
+        height: 25px !important;
+        color: #616161;
       }
 
       .icon-mini {
         position: absolute;
-        top: 6px;
-        left: 7px;
-        font-size: 16px;
+        top: 50%;
+        left: 50%;
+       
+        transform: translate(-6px,-6px);
+        text-align: center;
+        &.iconbofang4 {
+          font-size: 12px;
+          text-align: center;
+          color: red;
+          width: 12px;
+          height: 12px;
+          display: block;
+        }
+        &.iconzanting {
+          font-size: 12px;
+          text-align: center;
+          width: 12px;
+          height: 12px;
+          display: block;
+        }
       }
     }
 
@@ -491,9 +510,9 @@
       flex: 0 0 30px;
       width: 30px;
       padding-right: 6px;
-
       .iconbofangliebiao {
-        font-size: 30px;
+        font-size: 24px;
+        color: #4c4c4c;
       }
     }
   }

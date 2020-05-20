@@ -15,9 +15,12 @@ cd NetMusic //进入NetMusic 目录
 
 npm install //安装依赖
 
-npm run serve //运行NetMusic
+npm run dll // (DLLPlugin,加快构建速度）
 
-npm run build //打包NetMusic
+npm run serve //运行NetMusic
+// 当打包时
+npm run build //打包NetMusic  
+npm run dll (npm run build 会删除第一次的npm run dll 生成的文件 所以要在执行一次)
 ```
 
 > 后台服务器      
@@ -35,8 +38,6 @@ node app.js // 服务端运行 访问 http://localhost:3000
 ###  运行NetMusic无法获取数据 请检查后台是否启动
 
 # 技术栈
-
-+ Vue-cli (Vue脚手架工具)
 
 + Vue 2.6(渐进式 JavaScript 框架)
 
@@ -59,6 +60,8 @@ node app.js // 服务端运行 访问 http://localhost:3000
 +   postcss-pxtorem( PostCSS的插件，用于将像素单元生成rem单位 )      
 
 +  store(浏览器存储)
+
++  webpack
 
   # 项目结构目录
 

@@ -30,7 +30,7 @@
                 <img class="currenImg" v-lazy="currentSong.image" alt />
               </div>
               <div class="baseCls" :class="neeldeCls">
-                <img class="neeldeImg" src="./needle.png" alt />
+                <img class="neeldeImg" src="http://indust-creation.icci.top/needle.png" alt />
               </div>
             </div>
             <div class="playing-lyric">
@@ -109,6 +109,7 @@
             :rate="rate"
             :stroke-width="60"
             class="circle"
+            layer-color='#616161'
           >
             <span class="icon-mini" @click.stop="togglePlaying" :class="miniPlayIcon"></span>
           </van-circle>
@@ -151,21 +152,21 @@ import animations from "create-keyframe-animation";
 
 import Lyric from "lyric-parser";
 
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 
 import { prefixStyle } from "common/js/dom";
 
 import { mapGetters, mapMutations, mapActions } from "vuex";
 
-import MvComment from "base/MvComment/MvComment";
+import MvComment from "base/MvComment/MvComment.vue";
 
-import ProgressBar from "base/ProgressBar/ProgressBar";
+import ProgressBar from "base/ProgressBar/ProgressBar.vue";
 
 import { playMode } from "common/js/config";
 
 import { shuffle } from "common/js/until";
 
-import PlayList from "base/PlayList/PlayList";
+import PlayList from "base/PlayList/PlayList.vue";
 
 const transform = prefixStyle("transform");
 
@@ -459,9 +460,13 @@ export default {
           }
         })
         .catch(e => {
+
           this.currentLyric = null;
+
           this.playingLyric = "";
+
           this.currentLineNum = 0;
+
           this.$toast('很抱歉没有歌词')
         });
     },
@@ -475,7 +480,9 @@ export default {
       });
     },
     handleLyric({ lineNum, txt }) {
+
       this.currentLineNum = lineNum;
+
       if (lineNum > 5) {
         let lineEl = this.$refs.lyricLine[lineNum - 5];
         this.$refs.lyricList.scrollToElement(lineEl, 1000);
@@ -487,41 +494,59 @@ export default {
     middleTouchStart(e) {
       //初始化标识位 标识已经初始化过了
       this.touch.initiated = true;
+      // 获取触摸点
       const touch = e.touches[0];
+      // 触摸开始的x坐标
       this.touch.startX = touch.pageX;
+      // 触摸开始的y坐标
       this.touch.startY = touch.pageY;
     },
     middleTouchMove(e) {
+      // 如果没有设置标识位 就结束 下面的代码
       if (!this.touch.initiated === true) {
         return;
       }
+      // 手指移动时的触摸点
       const touch = e.touches[0];
+      // 移动的触摸点-初始手指触摸单是 = x方向的移动距离
       const deltaX = touch.pageX - this.touch.startX;
       console.log(deltaX);
+      // y方向的移动距离
       const deltaY = touch.pageY - this.touch.startY;
+      // x方向的移动距离 小于y方向的移动距离  则不执行后面的代码
       if (Math.abs(deltaX) < Math.abs(deltaY)) {
         return;
       }
+
       const left = this.currentShow === "cd" ? 0 : -window.innerWidth;
+
       console.log(left);
+
       const offsetWidth = Math.min(
         0,
         Math.max(-window.innerWidth, left + deltaX)
       );
+
       console.log(offsetWidth);
+     // offsetWidth = deltax
       this.touch.percent = Math.abs(offsetWidth / window.innerWidth);
+      // 歌词dom移动的距离
       this.$refs.lyricList.$el.style[
         transform
       ] = `translateX(${offsetWidth}px)`;
+
       this.$refs.lyricList.$el.style[transitionDuration] = 0;
+      // cd Dom透明度的变化
       this.$refs.middleL.style.opacity = 1 - this.touch.percent;
 
       this.$refs.middleL.style[transitionDuration] = 0;
     },
+    // 手指离开屏幕时触发
     middleTouchEnd(e) {
       let offsetWidth;
       let opacity;
       if (this.currentShow === "cd") {
+           console.log(this.touch.percent)
         if (this.touch.percent > 0.1) {
           offsetWidth = -window.innerWidth;
           this.currentShow = "lyric";
@@ -545,9 +570,13 @@ export default {
       this.$refs.lyricList.$el.style[
         transform
       ] = `translateX(${offsetWidth}px)`;
+
       this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`;
+
       this.$refs.middleL.style.opacity = opacity;
+
       this.$refs.middleL.style[transitionDuration] = `${time}ms`;
+
       this.touch.initiated = false;
     },
     ...mapMutations([

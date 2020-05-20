@@ -1,8 +1,8 @@
 <template>
   <div class="search-box">
-    <span class="iconfont iconsousuo"></span>
+    <!-- <span class="iconfont iconsousuo"></span> -->
     <input ref="query" v-model="query" placeholder="搜索歌曲歌手" class="query" type="text" />
-    <span @click="close" v-show="query" class="iconfont iconguanbi"></span>
+    <span @click="close" v-show="query" class="iconfont iconiconjia"></span>
   </div>
 </template>
 <script>
@@ -39,26 +39,28 @@ export default {
 .search-box {
   display: flex;
   justify-content: space-between;
-  padding: 0 6px;
-  background: #333;
+  margin: 0 6px;
+  // padding: 0 6px;
+  // background: #333;
   height: 40px;
   box-sizing: border-box;
   align-items: center;
-  border-radius: 6px;
+  border-bottom: 1px solid #c1c1c1;
 
   .query {
     flex: 1;
     border-color: yellow;
-    color: #ffff;
-    background: #333;
+    color: #b3b3b3;
+    // background: #333;
     margin: 0 5px;
     font-size: 14px;
     line-height: 18px;
   }
 
-  .iconguanbi {
+  .iconiconjia {
     position: relative;
     z-index: 20;
+    color: #333333;
   }
 }
 </style>

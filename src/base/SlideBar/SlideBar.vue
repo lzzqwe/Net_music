@@ -29,11 +29,11 @@ export default {
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: @color-background;
+  background-color: #ffffff;
   width: 100%;
 
   .iconyoujiantou {
-    color: @color-theme;
+    color: #333333;
     margin-left: 20px;
     font-size: 20px;
   }
@@ -41,6 +41,7 @@ export default {
   .back-title {
     font-size: 16px;
     margin-left: 15px;
+    color: #222921;
   }
 }
 </style>

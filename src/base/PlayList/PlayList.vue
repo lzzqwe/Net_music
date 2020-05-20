@@ -41,7 +41,7 @@
 <script>
 import { mapGetters, mapMutations, mapActions } from "vuex";
 import { playMode } from "common/js/config";
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 import { shuffle } from "common/js/until.js";
 export default {
   name: "playList",
@@ -200,28 +200,25 @@ export default {
         .iconpaixu {
           line-height: 30px;
           margin-right: 10px;
-          color: #ffcd32;
+          color: #2d2d2d;
           font-size: 25px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.2);
         }
 
         .iconliebiaoxunhuan {
           line-height: 30px;
           margin-right: 10px;
-          color: #ffcd32;
+          color: #2d2d2d;
           font-size: 25px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.2);
         }
 
         .icon-suiji {
           line-height: 30px;
           margin-right: 10px;
-          color: #ffcd32;
+          color: #2d2d2d;
           font-size: 25px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.2);
         }
 
         .text {
@@ -233,7 +230,7 @@ export default {
         }
 
         .iconlajitong1 {
-          color: rgba(255, 255, 255, 0.3);
+          color:#999999;
           line-height: 30px;
         }
       }
@@ -252,19 +249,21 @@ export default {
           flex: 0 0 30px;
           width: 30px;
           text-align: center;
-          color: #ffcd32;
+          color: #2d2d2d;
+          font-weight: 600;
         }
 
         .songName {
           flex: 1;
           margin-right: 20px;
           font-size: 14px;
+          color: #515151;
           .no-wrap;
         }
 
         .iconshoucangdianjihou {
           margin-right: 10px;
-          color: #ffcd32;
+          color: #b3b3b3;
 
           &.color {
             color: red;
@@ -272,7 +271,7 @@ export default {
         }
 
         .iconiconjia {
-          color: #ffcd32;
+          color: #b3b3b3;
         }
       }
     }

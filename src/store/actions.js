@@ -16,7 +16,8 @@ import {
     SET_FULLSCREEN,
     SET_PLAYING_STATE,
     SET_CURRENTINDEX,
-    SET_SEQUENCELIST
+    SET_SEQUENCELIST,
+    SET_MODE
 } from './mutation-type'
 
 
@@ -27,24 +28,34 @@ const findIndex = (list, song) => {
 }
 
 export const selectPlay = ({ commit, state }, { list, index }) =>{
+    // 提交顺序列表
     commit(SET_SEQUENCELIST, list)
     if (state.mode == playMode.random) {
+        // shffle 洗牌函数
         let randomList = shuffle(list)
+        // 提交 随机播放列表
         commit(SET_PLAYLIST, randomList)
+        // 找到当前播放歌曲的索引
         index = findIndex(randomList, list[index])
     } else {
+        // 提交 顺序播放列表
         commit(SET_PLAYLIST, list)
     }
+    // 提交当前播放歌曲的索引
     commit(SET_CURRENTINDEX, index)
     // commit(SET_FULLSCREEN, true)
+    // 提交播放状态 播放
     commit(SET_PLAYING_STATE, true)
 }
 
 export const randomPlay = ({ commit }, { list }) => {
-    commit(SET_PLAYING_STATE, playMode.random)
+    commit(SET_MODE, playMode.random)
     commit(SET_SEQUENCELIST, list)
+    // 洗牌函数
     let randomList = shuffle(list)
+    // 提交 播放列表
     commit(SET_PLAYLIST, randomList)
+
     commit(SET_CURRENTINDEX, 0)
     commit(SET_FULLSCREEN, true)
     commit(SET_PLAYING_STATE, true)
@@ -63,9 +74,9 @@ export const insertSong = ({ commit, state }, song) => {
     //查找当前列表中是否有待插入歌曲 并且返回索引
 
     let fpIndex = findIndex(playList, song)
-
+    // 当前播放歌曲索引+1
     currentIndex++
-
+     // 插入歌曲
     playList.splice(currentIndex, 0, song)
 
     if (fpIndex > -1) {

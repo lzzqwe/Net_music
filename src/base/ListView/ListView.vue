@@ -20,7 +20,7 @@
 </template>
 <script>
 const ANCHOR_HEIGHT = 20;
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 import { getData } from "common/js/dom";
 export default {
   props: {
@@ -65,19 +65,20 @@ export default {
 
     .item {
       margin: 20px 20px 0 20px;
-      .border-1px(#FFEC73);
+      .border-1px(#e5e5e5);
 
       .item-img {
         border-radius: 50%;
         vertical-align: middle;
         margin-right: 20px;
-        width: 50px;
-        height: 50px;
-        margin-bottom: 5px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
       }
 
       .name {
         font-size: 14px;
+        color: #333333;
       }
     }
   }

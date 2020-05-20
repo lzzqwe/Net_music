@@ -1,5 +1,7 @@
 @import '~common/less/variable.less';
 
+@import '~common/less/mixin.less';
+
 .recommend {
   /deep/ .img {
     display: block;
@@ -19,8 +21,9 @@
     position: absolute;
     right: 0;
     bottom: 5px;
-    color: @color-theme-d;
+    color: #2d2d2d;
     font-size: 12px;
+    font-weight: 600;
   }
 }
 
@@ -43,19 +46,25 @@
       .sub-item {
         width: 55px;
         height: 55px;
-
-        .sub-img {
-          width: 100%;
-          height: 100%;
-          border-radius: 5px;
+        .sub-p {
+          width: 45px;
+          height: 45px;
+          overflow: hidden;
+          border-radius: 50%;
+          .sub-img {
+            width: 100%;
+            height: 100%;
+           
+          }
         }
 
         .sub-title {
           font-size: 12px;
           line-height: 20px;
           margin-top: 5px;
-          text-align: center;
-          color: #FFFF;
+          text-align: left;
+          text-indent:5px;
+          color: #3a3a3a;
         }
       }
     }
@@ -75,19 +84,23 @@
         box-sizing: border-box;
         height: 40px;
         align-items: center;
+        margin-bottom: 10px;
 
         .good-listen-title {
-          font-size: 18px;
+          font-size: 20px;
+          color:#3a3a3a;
+          font-weight: 600;
         }
 
         .moretext {
-          border: 1px solid @color-theme-d;
-          padding: 0 5px;
+          border: 1px solid #e7e7e7;
+          padding: 0 8px;
           font-size: 12px;
-          border-radius: 5px;
+          border-radius: 15px;
           height: 30px;
           line-height: 30px;
-          color: @color-dialog-background;
+          color: #585858;
+          background-color: #ffffff;
         }
       }
 
@@ -95,12 +108,15 @@
         .song-select {
           display: flex;
           padding: 10px;
-
+          .border-1px(#e5e5e5);
+          &:last-child {
+            .border-none()
+          }
           .song-img {
             margin-right: 10px;
-            width: 60px;
-            height: 60px;
-            flex: 0 0 60px;
+            width: 50px;
+            height: 50px;
+            flex: 0 0 50px;
             border-radius: 5px;
           }
 
@@ -111,33 +127,36 @@
             align-items: center;
 
             .songs-name {
-              line-height: 35px;
+              line-height: 25px;
+              flex: 1;
 
               .songs-title {
                 margin-right: 10px;
                 font-size: 14px;
+                color: #424242;
               }
 
               .singer-name {
                 font-size: 10px;
-                color: @color-theme-d;
+                color: #acacac;
               }
             }
 
             .play {
+              flex: 0 0 20px;
               .iconbofang2 {
-                font-size: 25px;
-                color: @color-sub-theme;
+                font-size: 20px;
+                color: #ff3c37;
 
                 &.playShow {
                   display: none;
                 }
               }
 
-              .iconbofang3 {
-                font-size: 25px;
+              .iconvolume {
+                font-size: 20px;
                 display: none;
-                color: @color-theme;
+                color: #ff3c37;
 
                 &.active {
                   display: block;

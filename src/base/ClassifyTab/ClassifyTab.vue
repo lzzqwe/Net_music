@@ -20,7 +20,7 @@
   </base-scroll>
 </template>
 <script>
-import BaseScroll from "base/BaseScroll/BaseScroll";
+import BaseScroll from "base/BaseScroll/BaseScroll.vue";
 export default {
   name: "ClassifyTab",
   props: {
@@ -65,7 +65,7 @@ export default {
   height: 30px;
   line-height: 30px;
   overflow: hidden;
-  background-color: #1f0404;
+  // background-color: #1f0404;
   margin-bottom: 5px;
 
   .tab-item-ls {
@@ -73,6 +73,7 @@ export default {
 
     .classify-title {
       font-size: 14px;
+      color: #666666;
     }
 
     .item-ls-in {

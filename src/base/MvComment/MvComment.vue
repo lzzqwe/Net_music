@@ -50,12 +50,13 @@ export default {
 @import '~common/less/mixin.less';
 
 .good-content {
-  padding: 20px 20px 0 20px;
+  padding: 20px 20px 0 15px;
 
   .good-title {
     line-height: 40px;
     font-size: @font-size-medium-x;
     font-weight: 600;
+    color: #282828;
   }
 
   .content-item {
@@ -70,14 +71,14 @@ export default {
         display: flex;
 
         img {
-          width: 45px;
-          height: 45px;
+          width: 35px;
+          height: 35px;
           border-radius: 50%;
           vertical-align: middle;
         }
 
         .nick-pub {
-          margin-left: 15px;
+          margin-left: 10px;
 
           .nickname {
             font-size: @font-size-small;
@@ -92,20 +93,20 @@ export default {
       }
 
       .like {
+        color: #989898;
         .like-count {
           font-size: @font-size-small;
-          margin-right: 5px;
         }
       }
     }
 
     .appraisal-content {
       line-height: 25px;
-      font-size: @font-size-medium;
-      color: @color-theme;
-      margin-left: 30px;
+      font-size: 12px;
+      color:#2b2b2b;
+      margin-left: 45px;
       padding-bottom: 10px;
-      .border-1px(#6A92D4);
+      .border-1px(#f1f1f1);
     }
   }
 }

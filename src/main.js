@@ -63,7 +63,6 @@ Vue.prototype.$dialog_1 = function() {
     });
 }
 Vue.config.productionTip = false
-
 new Vue({
     router,
     store,

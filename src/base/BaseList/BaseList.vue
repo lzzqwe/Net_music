@@ -7,6 +7,7 @@
       <span class="iconfont iconbofangliang"></span>
       <span class="play-count">{{ _nomalNum(lis.playCount,2)}}</span>
     </div>
+    <!-- <van-loading v-show="hasMore" type="spinner" color="#1989fa">加载中...</van-loading> -->
   </div>
 </template>
 <script>
@@ -16,7 +17,29 @@ export default {
     list: {
       type: Array,
       default: () => []
+    },
+    hasMore:{
+      type:Boolean,
+      default:false
     }
+  },
+   beforeMount() {
+    
+  },
+  mounted() {
+    
+  },
+  beforeUpdate() {
+    
+  },
+  updated() {
+    
+  },
+  beforeDestroy() {
+    
+  },
+  destroyed() {
+    
   },
   methods: {
     _nomalNum(num, point) {
@@ -71,7 +94,7 @@ export default {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       font-size: 12px;
-      color: #ff976a;
+      color: #2f2f2f;
       line-height: 20px;
     }
 
@@ -79,6 +102,7 @@ export default {
       position: absolute;
       top: 5px;
       left: 10px;
+      font-size: 12px;
     }
 
     .play-count {

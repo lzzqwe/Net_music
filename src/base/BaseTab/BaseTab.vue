@@ -35,17 +35,18 @@ export default {
 
     .tab-link {
       padding-bottom: 5px;
-      color: @color-text-l;
+      color: #797979;
     }
 
-    &.router-link-active {
+    &.router-link-exact-active>.tab-link {
       font-size: 20px;
       font-weight: 600;
+      color: #303030 !important;
 
-      .tab-link {
-        color: @color-theme;
-        border-bottom: 2px solid @color-theme;
-      }
+      // .tab-link {
+      //   color:#303030;
+      //   border-bottom: 2px solid #303030;
+      // }
     }
   }
 }
