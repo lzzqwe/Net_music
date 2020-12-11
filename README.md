@@ -15,12 +15,10 @@ cd NetMusic //进入NetMusic 目录
 
 npm install //安装依赖
 
-npm run dll // (DLLPlugin,加快构建速度）
 
 npm run serve //运行NetMusic
 // 当打包时
 npm run build //打包NetMusic  
-npm run dll (npm run build 会删除第一次的npm run dll 生成的文件 所以要在执行一次)
 ```
 
 > 后台服务器      
