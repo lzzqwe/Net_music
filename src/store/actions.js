@@ -1,176 +1,63 @@
-import { shuffle } from 'common/js/until'
-import { playMode } from 'common/js/config'
-import {
-    saveSearch,
-    deleteSearch,
-    clearSearch,
-    savePlay,
-    saveFavorite,
-    deleteFavorites
-} from 'common/js/cache'
-import {
-    SET_PLAYLIST,
-    SET_SEARCH_HISTORY,
-    SET_PLAY_HISTORY,
-    SET_FAVORITE_LIST,
-    SET_FULLSCREEN,
-    SET_PLAYING_STATE,
-    SET_CURRENTINDEX,
-    SET_SEQUENCELIST,
-    SET_MODE
-} from './mutation-type'
-
-
-const findIndex = (list, song) => {
-    return list.findIndex((item) => {
-        return item.id === song.id
+import {getHomeSwiper, getPrivateFm,getSongComment} from '../api/index.js'
+import {createSong} from '../common/js/song'
+import {SET_BANNERS,
+  SET_CURRENTINDEX,
+  SET_PLAYLIST,
+  SET_FULLSCREEN,
+  GET_PRIVATEFM,
+  SET_PLAYING_STATUS,
+  GET_COMMENT_NUM,
+  SAVE_USER_INFO,
+  SET_OBJ,
+  SAVE_FAVORITE,
+  SAVE_HISTORY,
+  CLEAR_USER_INFO,
+  CLAER_PLAYLIST
+} from './mutation-types'
+export default {
+  async set_banners({commit}) {
+     const res = await getHomeSwiper()
+     commit(SET_BANNERS,{banners:res.banners})
+  },
+  select_play({commit},{playlist,index}) {
+    commit(SET_PLAYLIST,playlist)
+    commit(SET_CURRENTINDEX,index)
+    commit(SET_PLAYING_STATUS,true)
+    commit(SET_FULLSCREEN,true)
+  },
+  async get_privateFm({dispatch,commit,state}) {
+    const res = await getPrivateFm()
+    let result = []
+    res.data.forEach((item) => {
+      result.push(createSong({
+        id:item.id,
+        picUrl:item.album.picUrl,
+        duration:item.duration,
+        singer:item.artists[0].name,
+        name:item.name
+      }))
     })
-}
-
-export const selectPlay = ({ commit, state }, { list, index }) =>{
-    // 提交顺序列表
-    commit(SET_SEQUENCELIST, list)
-    if (state.mode == playMode.random) {
-        // shffle 洗牌函数
-        let randomList = shuffle(list)
-        // 提交 随机播放列表
-        commit(SET_PLAYLIST, randomList)
-        // 找到当前播放歌曲的索引
-        index = findIndex(randomList, list[index])
-    } else {
-        // 提交 顺序播放列表
-        commit(SET_PLAYLIST, list)
-    }
-    // 提交当前播放歌曲的索引
-    commit(SET_CURRENTINDEX, index)
-    // commit(SET_FULLSCREEN, true)
-    // 提交播放状态 播放
-    commit(SET_PLAYING_STATE, true)
-}
-
-export const randomPlay = ({ commit }, { list }) => {
-    commit(SET_MODE, playMode.random)
-    commit(SET_SEQUENCELIST, list)
-    // 洗牌函数
-    let randomList = shuffle(list)
-    // 提交 播放列表
-    commit(SET_PLAYLIST, randomList)
-
-    commit(SET_CURRENTINDEX, 0)
-    commit(SET_FULLSCREEN, true)
-    commit(SET_PLAYING_STATE, true)
-}
-
-
-export const insertSong = ({ commit, state }, song) => {
-    // 返回副本 修改state的值
-    let playList = state.playList.slice()
-
-    let sequenceList = state.sequenceList.slice()
-    // currentIndex是值类型 相当于赋值
-    let currentIndex = state.currentIndex
-    // 记录一下当前歌曲
-    let currentSong = playList[currentIndex]
-    //查找当前列表中是否有待插入歌曲 并且返回索引
-
-    let fpIndex = findIndex(playList, song)
-    // 当前播放歌曲索引+1
-    currentIndex++
-     // 插入歌曲
-    playList.splice(currentIndex, 0, song)
-
-    if (fpIndex > -1) {
-        // 如果当前插入的序号大于列表中的序号
-        if (currentIndex > fpIndex) {
-            playList.splice(fpIndex, 1)
-            currentIndex--
-        } else {
-            playList.splice(fpIndex + 1, 1)
-        }
-    }
-    // 查找顺序列表中当前歌曲的索引 然后加1
-
-    let currentSIndex = findIndex(sequenceList, currentSong) + 1
-
-    // 查找顺序列表中是否有有待插入歌曲 并且返回索引
-
-    let fsIndex = findIndex(sequenceList, song)
-
-    sequenceList.splice(currentSIndex, 0, song)
-
-    if (fsIndex > -1) {
-        if (currentSIndex > fsIndex) {
-            sequenceList.splice(fsIndex, 1)
-        } else {
-            sequenceList.splice(fsIndex + 1, 1)
-        }
-    }
-    commit(SET_PLAYLIST, playList)
-
-    commit(SET_SEQUENCELIST, sequenceList)
-
-    commit(SET_CURRENTINDEX, currentIndex)
-
-    commit(SET_FULLSCREEN, true)
-
-    commit(SET_PLAYING_STATE, true)
-}
-// 保存搜索历史
-export const saveSearchHistory = ({ commit }, query) =>{
-    commit(SET_SEARCH_HISTORY, saveSearch(query))
-}
-// 删除某个搜索历史
-export const deleteSearchHistory = ({ commit }, query) =>{
-    commit(SET_SEARCH_HISTORY, deleteSearch(query))
-}
-// 清空搜索历史
-export const clearSearchHistory = ({ commit }) =>{
-    commit(SET_SEARCH_HISTORY, clearSearch())
-}
-// 删除歌曲
-export const deleteSong = ({ commit, state }, song) =>{
-    let playList = state.playList.slice()
-
-    let sequenceList = state.sequenceList.slice()
-
-    let currentIndex = state.currentIndex
-
-    let fpIndex = findIndex(playList, song)
-
-    playList.splice(fpIndex, 1)
-
-    let fsIndex = findIndex(sequenceList, song)
-
-    sequenceList.splice(fsIndex, 1)
-
-    if (currentIndex > fpIndex || currentIndex == playList.length) {
-        currentIndex--
-    }
-    commit(SET_PLAYLIST, playList)
-
-    commit(SET_SEQUENCELIST, sequenceList)
-
-    commit(SET_CURRENTINDEX, currentIndex)
-
-    commit(SET_PLAYING_STATE, playList > 0)
-}
-// 删除歌曲的列表
-export const deleteSongList = ({ commit }) =>{
-    commit(SET_PLAYLIST, [])
-    commit(SET_SEQUENCELIST, [])
-    commit(SET_CURRENTINDEX, -1)
-    commit(SET_PLAYING_STATE, false)
-}
-// 保存播放歌曲的历史
-export const savePlayHistory = ({ commit }, song) =>{
-    commit(SET_PLAY_HISTORY, savePlay(song))
-}
-
-// 保存收藏
-export const saveFavoriteList = ({ commit }, song) =>{
-    commit(SET_FAVORITE_LIST, saveFavorite(song))
-}
-// 删除收藏
-export const deleteFavoriteList = ({ commit }, song) =>{
-    commit(SET_FAVORITE_LIST, deleteFavorites(song))
+    commit(GET_PRIVATEFM,{privateFm:result})
+    await dispatch('select_play',{playlist:state.privateFm,index:0})
+  },
+  save_user_info({commit},{userInfo}) {
+    commit(SAVE_USER_INFO,{userInfo})
+  },
+  save_obj({commit},{obj}) {
+    commit(SET_OBJ,{obj})
+  },
+  save_favorite({commit},{favorite}) {
+    commit(SAVE_FAVORITE,{favorite})
+  },
+  save_history({commit},{history}) {
+    commit(SAVE_HISTORY,{history})
+  },
+  clear_user_info({commit}) {
+    commit(CLEAR_USER_INFO)
+  },
+  clear_playlist({commit}) {
+    commit(CLAER_PLAYLIST)
+    commit(SET_CURRENTINDEX,-1)
+    commit(SET_PLAYING_STATUS,false)
+  }
 }

@@ -1,6 +1,7 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
+// const pxtorem = require('postcss-pxtorem');
+const pxtoviewport = require('postcss-px-to-viewport');
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -15,30 +16,40 @@ module.exports = {
             .set('common', resolve('src/common'))
             .set('base', resolve('src/base'))
     },
-    devServer: {
-        proxy: {
-            '/': { // 匹配所有以 '/api'开头的请求路径
-                target: 'http://127.0.0.1:3000', // 代理目标的基础路径
-                changeOrigin: true, // 支持跨域
-                pathRewrite: { // 重写路径: 去掉路径中开头的'/api'
-                    '^/': ''
-                }
-            }
-        },
-        open: true,
-        host: '0.0.0.0', // 将 host:'localhost' 改成 host:'0.0.0.0',
-        port: 8080
-    },
     css: {
         loaderOptions: {
           postcss: {
             plugins: [
               autoprefixer(),
-              pxtorem({
-                rootValue: 37.5,
-                propList: ['*']
+              // pxtorem({
+              //   rootValue: 54,
+              //   propList: ['*']
+              // })
+              pxtoviewport({
+                viewportWidth: 540
               })
             ]
+          },
+          less:{
+            modifyVars: {
+              // 直接覆盖变量
+              'dialog-width': '470px',
+              'dialog-border-radius': '12px',
+              'dialog-message-font-size': '20px',
+              'dialog-has-title-message-text-color': 'rgb(153,153,153)',
+              'dialog-font-size':'20px',
+              'dialog-message-padding':'30px',
+              'tabs-bottom-bar-width': '50px',
+              'tabs-bottom-bar-height': '9px',
+              'tabs-line-height':'86px',
+              'tabs-nav-background-color':'rgb(245,245,245)',
+              'tab-font-size': '20px',
+              'search-padding': '0 24px',
+              'search-background-color':'rgb(245,245,245)',
+              'search-content-background-color':'rgb(238,238,238)',
+              'search-input-height':'52px',
+              'search-action-font-size':'20px'
+            }
           }
         }
       }

@@ -2,7 +2,7 @@
 
 模仿的网易云移动端播放器  采用 flexbox 和 position 布局  
 
-[在线播放地址]( https://music.icci.top/ )
+[在线播放地址](http://8.136.18.82/#/)
 
 # 如何使用和安装
 
@@ -53,9 +53,9 @@ node app.js // 服务端运行 访问 http://localhost:3000
 
 + better-scroll( better-scroll 是一款重点解决移动端（已支持 PC）各种滚动场景需求的插件 )
 
-+   amfe-flexible (阿里手淘可伸缩布局方案amfe-flexible解决vue移动端适配)  
++   vw自适应移动端
 
-+   postcss-pxtorem( PostCSS的插件，用于将像素单元生成rem单位 )      
++   postcss-px-to-viewport( PostCSS的插件，用于将像素单元生成vw单位 )      
 
 +  store(浏览器存储)
 

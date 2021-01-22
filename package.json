@@ -1,64 +1,69 @@
 {
-    "name": "music",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "cross-env NODE_ENV=development vue-cli-service serve --open",
-        "start": "npm run dev",
-        "build": "cross-env NODE_ENV=production vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "net-music",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run serve",
+    "serve": "cross-env NODE_ENV=development vue-cli-service serve --open",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "axios": "^0.21.0",
+    "better-scroll": "^1.13.2",
+    "core-js": "^3.6.5",
+    "cross-env": "^5.2.0",
+    "good-storage": "^1.1.1",
+    "jwt-decode": "^2.2.0",
+    "lyric-parser": "^1.0.1",
+    "moment": "^2.29.1",
+    "postcss-pxtorem": "^4.0.1",
+    "swiper": "^5.4.1",
+    "vant": "^2.11.3",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-router": "^3.2.0",
+    "vue-slim-better-scroll": "^1.7.1",
+    "vuex": "^3.0.1",
+    "xgplayer": "^2.17.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "animate.css": "^3.7.2",
-        "axios": "^0.19.0",
-        "better-scroll": "^1.15.2",
-        "core-js": "^2.6.5",
-        "create-keyframe-animation": "^0.1.0",
-        "lyric-parser": "^1.0.1",
-        "store": "^2.0.12",
-        "vant": "^2.0.9",
-        "vue": "^2.6.10",
-        "vue-router": "^3.0.3",
-        "vuex": "^3.0.1",
-        "xgplayer": "^2.4.9",
-        "amfe-flexible": "^2.2.1",
-        "postcss-pxtorem": "^4.0.1"
+    "extends": [
+      "plugin:vue/essential"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
     },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.9.0",
-        "@vue/cli-plugin-eslint": "^3.9.0",
-        "@vue/cli-service": "^3.9.0",
-        "babel-eslint": "^10.0.1",
-        "babel-plugin-import": "^1.12.0",
-        "eslint": "^5.16.0",
-        "eslint-plugin-vue": "^5.0.0",
-        "vue-template-compiler": "^2.6.10",
-        "webpack-chain": "^6.0.0",
-        "less": "^3.0.4",
-        "less-loader": "^5.0.0",
-        "cross-env": "^5.2.0",
-        "mescroll.js": "^1.4.2"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential"
-        ],
-        "rules": {},
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
-    },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ]
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

@@ -1,68 +1,71 @@
 import Vue from 'vue'
-
 import App from './App.vue'
-
-import {
-    Button,
-    Tab,
-    Tabs,
-    Swipe,
-    SwipeItem,
-    Card,
-    Loading,
-    Toast,
-    Dialog,
-    Lazyload,
-    Circle,
-    PullRefresh
-} from 'vant'
-
+// import 'amfe-flexible';
+import './common/css/reset.css'
+import './common/font/iconfont.css'
 import router from './router'
+import store from './store'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import Scroll from 'vue-slim-better-scroll'
 
-import store from './store/index'
-import 'amfe-flexible';
-import 'common/less/index.less'
-import 'common/font/iconfont.css'
+// import style (<= Swiper 5.x)
+import 'swiper/css/swiper.css'
 
-Vue.use(Button)
-    .use(Tab)
-    .use(Tabs)
-    .use(PullRefresh)
-    .use(Swipe)
-    .use(SwipeItem)
-    .use(Card)
-    .use(Loading)
-    .use(Toast)
-    .use(Dialog)
-    .use(Circle)
-    .use(Lazyload, {
-        loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577964300&di=7c09f36a6088ba96f19efc39baab8bb0&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ffbe4ef9f8e6fd3f723f5d33559af795bb370868712aca-z8IkyD_fw658'
-    })
-Vue.prototype.$dialog = function() {
-    Dialog.confirm({
-        title: '标题',
-        message: '是否要清空所有搜索历史?',
-        confirmButtonText: "清空",
-        width: 240
-    }).then(() => {
-        this.$store.dispatch('clearSearchHistory')
-    }).catch(() => {
-        // on cancel
-    });
-}
-Vue.prototype.$dialog_1 = function() {
-    Dialog.confirm({
-        title: '标题',
-        message: '是否要清空播放列表?',
-        confirmButtonText: "清空",
-        width: 240
-    }).then(() => {
-        this.$store.dispatch('deleteSongList')
-    }).catch(() => {
-        // on cancel
-    });
-}
+import 'vant/lib/dialog/style/less';
+import 'vant/lib/tabs/style/less'
+import 'vant/lib/search/style/less'
+import { Swipe,
+  SwipeItem,
+  Col,
+  Row,Tab,
+  Tabs,
+  Image as VanImage,
+  Form,Field,
+  Button,Dialog,
+  NoticeBar,
+  Switch,
+  PullRefresh,
+  List,
+  Toast,
+  Cell,
+  CellGroup,
+  Lazyload,
+  Search,
+  Skeleton,
+  Overlay,
+  ActionSheet
+} from 'vant';
+
+Vue.use(Swipe)
+  .use(SwipeItem)
+  .use(Tab)
+  .use(Tabs)
+  .use(VanImage)
+  .use(Col)
+  .use(Row)
+  .use(Form)
+  .use(Field)
+  .use(Button)
+  .use(Dialog)
+  .use(NoticeBar)
+  .use(Switch)
+  .use(PullRefresh)
+  .use(List)
+  .use(Cell)
+  .use(CellGroup)
+  .use(Toast)
+  .use(Search)
+  .use(Skeleton)
+  .use(Overlay)
+  .use(ActionSheet)
+  .use(Lazyload,{
+    lazyComponent: true,
+  })
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+Vue.use(Scroll)
+
 Vue.config.productionTip = false
+
 new Vue({
     router,
     store,
