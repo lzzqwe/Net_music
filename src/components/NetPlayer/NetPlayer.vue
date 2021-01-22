@@ -510,7 +510,7 @@ export default {
       const touch = e.touches[0];
       // 移动的触摸点-初始手指触摸单是 = x方向的移动距离
       const deltaX = touch.pageX - this.touch.startX;
-      console.log(deltaX);
+      console.log('deltaX'+deltaX);
       // y方向的移动距离
       const deltaY = touch.pageY - this.touch.startY;
       // x方向的移动距离 小于y方向的移动距离  则不执行后面的代码
@@ -520,16 +520,17 @@ export default {
 
       const left = this.currentShow === "cd" ? 0 : -window.innerWidth;
 
-      console.log(left);
+      console.log('left'+left);
 
       const offsetWidth = Math.min(
         0,
         Math.max(-window.innerWidth, left + deltaX)
       );
 
-      console.log(offsetWidth);
+      console.log('offsetWidth'+offsetWidth);
      // offsetWidth = deltax
       this.touch.percent = Math.abs(offsetWidth / window.innerWidth);
+      console.log('this.touch.percent'+this.touch.percent)
       // 歌词dom移动的距离
       this.$refs.lyricList.$el.style[
         transform
@@ -556,7 +557,7 @@ export default {
           opacity = 1;
         }
       } else {
-        if (this.touch.percent > 0.5) {
+        if (this.touch.percent > 0.8) {
           offsetWidth = 0;
           this.currentShow = "cd";
           opacity = 1;

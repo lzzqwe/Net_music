@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     _nomalNum(num, point) {
+      console.log(num);
       // 简化数字拆分为字符串
       let numStr = num.toString().split(".")[0];
       if (numStr.length < 6) {

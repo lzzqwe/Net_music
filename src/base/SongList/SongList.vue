@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     selectItem(item, index) {
-      console.log(this.$refs.songItem[index]);
       this.nowIndex = index;
       this.$emit("select", item, index);
     },
