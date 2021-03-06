@@ -2,7 +2,7 @@
 
 模仿的网易云移动端播放器  采用 flexbox 和 position 布局  
 
-[在线播放地址]( http://8.136.18.82/#/ )
+[在线播放地址]( https://music.icci.top/ )
 [代码地址](https://github.com/lzzqwe/Net_music)
 
 # 如何使用和安装
