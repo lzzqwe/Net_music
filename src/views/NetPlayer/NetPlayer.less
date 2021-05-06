@@ -1,0 +1,328 @@
+@import "../../common/less/variable";
+@import '../../common/less/mixin.less';
+.net-player {
+  width: 100%;
+  height: 100%;
+  /deep/ .van-popup--round {
+  }
+  .normal-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index:10;
+    background-color: #222;
+    .background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      filter: blur(30px);
+      transform-origin: center center;
+      transform: scale(1.5);
+      opacity: 1;
+      z-index: -1;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.7);
+      }
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      padding: 0 21px 0 27px;
+      color: rgba(255,255,253);
+      margin-top: 32px;
+      .iconshouqi {
+        font-size: 24px;
+        width: 24px;
+        flex: 0 0 24px;
+      }
+      .name {
+        font-size: 0;
+        flex: 1;
+        .song-name {
+          font-size: 24px;
+          padding: 0 30px;
+          margin: 0 auto;
+        }
+        .singer {
+          margin-top: 9px;
+          display: flex;
+          justify-content: center;
+          color: rgb(116,136,149);
+          .text {
+            font-size: 18px;
+            margin-right: 7px;
+          }
+          .icongengduo1 {
+            font-size: 18px;
+          }
+        }
+      }
+      .iconfenxiang {
+        font-size: 30px;
+        flex: 0 0 30px;
+      }
+    }
+    .middle {
+      position: fixed;
+      top: 10.9%;
+      left: 67px;
+      right: 67px;
+      bottom: 20%;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .cd {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .inner-circle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 394px;
+          height: 394px;
+          transform: translate3d(-50%,-50%,0);
+          border-radius: 50%;
+          background-image: url("https://s3.music.126.net/mobile-new/img/disc-plus.png?b700b62e1971b351dcb8b8ce1c9ceea3=");
+          background-size: 100% 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .album-img {
+            width: 266px;
+            height: 266px;
+            z-index: 10;
+            position: absolute;
+            &.rotate {
+              animation-name: rotate;
+              animation-duration: 20s;
+              animation-iteration-count: infinite;
+              animation-timing-function: linear;
+            }
+            &.rotate_pause {
+              animation-play-state: paused;
+            }
+            .image {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
+        .music-pole {
+          position: absolute;
+          top: 0;
+          width: 120px;
+          height: 270px;
+          background-color: transparent;
+          left: 50%;
+          z-index: 15;
+          margin-left: -44px;
+          background-image: url("./needle.png");
+          background-size: 120px 270px;
+          transform-origin: 0 0;
+          transition: all 1s;
+          &.rateCls {
+            transform: rotate(0deg);
+          }
+          &.pase_rateCls {
+            transform: rotate(-20deg);
+          }
+        }
+        .current-text {
+          position: absolute;
+          bottom: 20px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          font-size: 14px;
+          color: #ffffff;
+          font-weight: 600;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+      .lyric {
+        width: 100%;
+        height: 100%;
+        font-size: 23px;
+        line-height: 65px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        color: rgb(153,153,153);
+        z-index: 14;
+        text-align: center;
+        .current {
+          font-weight: 600;
+          color: #ffffff;
+        }
+      }
+    }
+    .bottom {
+      position: fixed;
+      bottom: 31px;
+      left: 30px;
+      right: 30px;
+      .operator_1{
+        display: flex;
+        justify-content: space-between;
+        color: rgb(185,191,200);
+        padding: 0 46px;
+        align-items: center;
+        .iconshoucang3 {
+          font-size: 31px;
+        }
+        .iconcollection {
+          font-size: 31px;
+          color: #8f342d;
+        }
+        .icondibar-xiazai {
+          font-size: 31px;
+        }
+        .iconicon-test {
+          font-size: 31px;
+        }
+        .iconpinglun1 {
+          font-size: 31px;
+          position: relative;
+          .comment-count {
+            position: absolute;
+            font-size: 10px;
+            top: -10px;
+            left: 20px;
+          }
+        }
+        .iconsandian {
+          font-size: 31px;
+        }
+      }
+      .operator_2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: rgb(185,191,200);
+        padding: 0 46px;
+        margin-top: 25px;
+        .iconloop {
+          font-size: 28px;
+        }
+        .iconshangyiqu3 {
+          font-size: 28px;
+        }
+        .iconbofang3 {
+          font-size: 76px;
+        }
+        .iconbofang9 {
+          font-size: 76px;
+        }
+        .iconxiayiqu1 {
+          font-size: 28px;
+        }
+        .iconbofangliebiao {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+  .mini-player {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 82px;
+    z-index: 100;
+    right: 0;
+    background-color: var(--body-bgcolor);
+    color: var(--font-color);
+    border-top: 1px solid var(--body-bgcolor);
+    padding: 0 24px;
+    display: flex;
+    box-sizing: border-box;
+    .mini-icon {
+      width: 55px;
+      height: 55px;
+      flex: 0 0 55px;
+      font-size: 0;
+      margin-top: 7px;
+      &.rotate {
+        animation-name: rotate;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      &.rotate_pause {
+        animation-play-state: paused;
+      }
+      .image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    .text {
+      flex: 1;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      margin-left: 13px;
+      .singer-name {
+        font-size: 12px;
+      }
+    }
+    .control {
+      flex: 0 0 42px;
+      display: flex;
+      align-items: center;
+      margin-right: 40px;
+      &:last-child {
+        margin-right:0 ;
+      }
+      .iconbofang3 {
+        font-size: 42px;
+      }
+      .iconbofang9 {
+        font-size: 42px;
+      }
+      .iconliebiao {
+        font-size: 42px;
+      }
+    }
+  }
+}
+.net-player {
+  /deep/ .van-notice-bar {
+    background-color:transparent;
+    color: rgb(254,254,254);
+    text-align: center;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  //50% {
+  //  transform: rotate(180deg);
+  //}
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
