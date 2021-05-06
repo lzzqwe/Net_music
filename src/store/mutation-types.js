@@ -1,0 +1,15 @@
+export const SET_BANNERS = 'set_banners';
+export const SET_FULLSCREEN = 'set_fullscreen';
+export const SET_CURRENTINDEX = 'set_currentIndex';
+export const SET_PLAYLIST = 'set_playlist';
+export const GET_PRIVATEFM = 'get_privateFm';
+export const SET_PLAYING_STATUS = 'set_playing_status';
+export const SAVE_USER_INFO = 'save_user_info';
+export const SET_OBJ = 'set_obj';
+export const SAVE_FAVORITE = 'save_favorite';
+export const SAVE_HISTORY = 'save_history';
+export const CLEAR_USER_INFO = 'clear_user_info';
+export const CLAER_PLAYLIST = 'clear_playlist';
+export const SET_SEARCHES = 'set_searches';
+export const CLEAR_ALL_SEARCHES = 'clear_all_searches';
+export const SET_TOKEN = 'set_token';
